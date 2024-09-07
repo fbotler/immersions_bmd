@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt]{article}
+%\documentclass[letterpaper,11pt]{article}
+ \setlength{\parskip}{0pc}
+ \setlength{\textwidth}{38pc}
+ \setlength{\textheight}{56pc} 
+ \setlength{\topmargin}{-1.2cm}
+ \setlength\oddsidemargin{0cm}  
+ \setlength\evensidemargin{0cm} 
+
+\usepackage{setspace}
+
+\usepackage{latexsym} % yw acrescentou
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage{amsfonts,amsmath,amssymb,amsbsy,amsthm,enumerate}
+%\usepackage{graphics,graphicx,subfigure,psfrag}
+
+\usepackage[mathscr]{euscript}
+%\usepackage{bbm}
+%\usepackage{authblk}
+%\usepackage{arydshln}
+\usepackage{pstricks}
+\usepackage{multirow}
+\usepackage{verbatim}
+\usepackage{color}
+
+\sloppy
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+
+\bibliographystyle{plain}
+
+%%TIKZ
+%\usepackage{tikz}
+%\usepackage{xifthen}	% Pacote para usar if/then/else no tikz
+%\usepackage{subfig}	% Pacote para botar várias figuras juntas \subfloat[legenda]{\PoeFigura{nome-da-figura}\label{fig:mimim}}
+%\usetikzlibrary{calc,positioning,decorations.pathmorphing,decorations.pathreplacing}
+%\tikzset{emp/.style={double distance = 0.3ex}}
+%\tikzset{oriented/.style={->,shorten >= 1.5pt}}
+%%\usepackage{./Figures/figstyle}
+
+%\usepackage{graphicx}
+
+\title{Immersions of cliques in graphs with bounded maximum degree}
+
+\begin{document}
+
+\maketitle
+
+Let \(k\) be a positive integer,
+and let  \(F_k\) be an Andrasfai graph.
+Note that \(h = v(F_k) = 3k-1\) and \(\omega(F_k) = k\).
+Let \(G\) be a graph such that \(\overline{G}\) is a blow-up of \(F_k\) on \(n\) vertices.
+Let \(V_1,\ldots, V_h\) be the graph classes of \(\overline{G}\).
+Let \(K\) be a maximum clique of \(G\).
+One can prove that \(V(K)\) is the disjoint union of precisely \(k\) classes.
+Moreover we can assume without loss of generality that \(V(K) = \cup_{i=0}^{k-1} V_{3i+1}\).
+If \(v(K) \geq n/2\), then we are done.
+Suppose that \(v(K) <n/2\). 
+In what follows, we find an immersion of a clique in which the branch vertices are precisely \(V(G)\setminus V(K)\).
+
+Assume that \(A_i\) with \(i \in I = \{2,3,5,6,\ldots,3k-4,3k-3\}\)
+satisfying the following conditions.
+\begin{enumerate}
+	\item	for every \(i\in I\) if \(j,j'\in N_{F_k}[i]\cap I\), then \(A_j\cap A_{j'} = \emptyset\), i.e., the sets \(A_j\) with \(j \in N_{F_k}[i]\cap I\) are mutually disjoint;
+	\item	\(A_j \subseteq \overline{N_G(V_j)} \cap V(K)\);
+	\item	\(|A_j| = |V_j|\).
+\end{enumerate}
+
+\begin{lemma}
+	If those guys exist, then we are done
+\end{lemma}
+
+\begin{lemma}
+	Those guys exist
+\end{lemma}
+
+%\bibliographystyle{amsplain}
+
+%\bibliography{bibliografia}
+
+\end{document}
