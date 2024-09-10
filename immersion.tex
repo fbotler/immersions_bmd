@@ -45,39 +45,56 @@
 
 %\usepackage{graphicx}
 
-\title{Immersions of cliques in graphs with bounded maximum degree}
+\title{Immersions of cliques in graphs \\ with bounded maximum degree}
 
 \begin{document}
 
 \maketitle
 
-Let \(k\) be a positive integer,
-and let  \(F_k\) be an Andrasfai graph.
-Note that \(h = v(F_k) = 3k-1\) and \(\omega(F_k) = k\).
-Let \(G\) be a graph such that \(\overline{G}\) is a blow-up of \(F_k\) on \(n\) vertices.
-Let \(V_1,\ldots, V_h\) be the graph classes of \(\overline{G}\).
-Let \(K\) be a maximum clique of \(G\).
-One can prove that \(V(K)\) is the disjoint union of precisely \(k\) classes.
-Moreover we can assume without loss of generality that \(V(K) = \cup_{i=0}^{k-1} V_{3i+1}\).
-If \(v(K) \geq n/2\), then we are done.
-Suppose that \(v(K) <n/2\). 
-In what follows, we find an immersion of a clique in which the branch vertices are precisely \(V(G)\setminus V(K)\).
+\section{Andrasfai graphs and its relatives}
 
-Assume that \(A_i\) with \(i \in I = \{2,3,5,6,\ldots,3k-4,3k-3\}\)
-satisfying the following conditions.
+Andrasfai graphs are well-known triangle-free graphs. 
+Any blow-up of an Andrasfai graph is also triangle-free.
+So the complement of these graphs have independence number at most 2. 
+In what follows we study immersions of cliques in this class of graphs. 
+ 
+Let \(k\) be a positive integer, and let \(F_k\) be the Andrasfai graph of order $k$.
+Note that \(h = v(F_k) = 3k-1\) and \(\omega(F_k) = k\).
+Let \(G\) be a graph such that \(\overline{G}\) is a blow-up of \(F_k\), 
+and let \(V_1,\ldots, V_h\) be the blow-up vertex classes.
+Say \(G\) has \(n\) vertices.
+Let \(K\) be a maximum clique in \(G\).
+One can prove that \(V(K)\) is the disjoint union of precisely \(k\) of the blow-up vertex classes.
+Moreover we may assume without loss of generality that \(V(K) = \cup_{i=0}^{k-1} V_{3i+1}\).
+In what follows, we find an immersion in \(G\) of a clique in which the branch vertices are 
+precisely \(V(G)\setminus V(K)\).
+
+Let \(I = \{2,3,5,6,\ldots,3k-4,3k-3\}\) be the indices of the blow-up vertex classes
+corresponding to \(V(G)\setminus V(K)\).
+We say a family \(\{A_i: i \in I\}\) of subsets of \(V(K)\) is a \emph{helpful set family} 
+if it satisfies the following conditions for every \(i \in I\):
 \begin{enumerate}
-	\item	for every \(i\in I\) if \(j,j'\in N_{F_k}[i]\cap I\), then \(A_j\cap A_{j'} = \emptyset\), i.e., the sets \(A_j\) with \(j \in N_{F_k}[i]\cap I\) are mutually disjoint;
-	\item	\(A_j \subseteq \overline{N_G(V_j)} \cap V(K)\);
-	\item	\(|A_j| = |V_j|\).
+\item \(|A_i| = |V_i|\);
+\item \(A_i \subseteq \overline{N_G(V_i)} \cap V(K)\);
+\item the sets \(A_j\) with \(j \in N_{F_k}[i]\cap I\) are mutually disjoint, 
+  that is, if \(j,j' \in N_{F_k}[i] \cap I\), then \(A_j\cap A_{j'} = \emptyset\).
 \end{enumerate}
 
 \begin{lemma}
-	If those guys exist, then we are done
+  If \(G\) has a helpful set family, then there is an immersion in \(G\) of 
+  a clique in which the branch vertices are precisely \(V(G)\setminus V(K)\).
 \end{lemma}
 
 \begin{lemma}
-	Those guys exist
+  Graph \(G\) has a helpful set family. 
 \end{lemma}
+
+This implies the following: 
+
+\begin{theorem}
+ The vertex set of the complement of any blow up of an Andrasfai graph can be partitioned 
+ into a clique and the branch vertices of an immersion of a clique. 
+\end{theorem}
 
 %\bibliographystyle{amsplain}
 
