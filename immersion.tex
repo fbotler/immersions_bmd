@@ -152,7 +152,11 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 	Thus, we may assume \(r_u = r_{v'}\) and \(r_v = r_{u'}\).
 	As noted above, this implies that \(uv',vu' \in E'\) (see Figure~\ref{fig:induced-C4}).
 	But then \(\{u,v,u',v'\}\) induce a \(C_4\) in \(G[C_2\cup C_3]\),
-	a contradiction .
+	a contradiction.
+	
+	Since \(C_2\) and \(C_3\) are cliques,
+	and the paths \(P_e\) with \(e\notin E'\) are edge-disjoint,
+	\(G[C_2\cup C_3]\cup\{P_e : e\notin E'\}\) is the desired immersion.
 \end{proof}
 
 \begin{figure}[ht]
