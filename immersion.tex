@@ -35,13 +35,11 @@
 \bibliographystyle{plain}
 
 %%TIKZ
-%\usepackage{tikz}
-%\usepackage{xifthen}	% Pacote para usar if/then/else no tikz
-%\usepackage{subfig}	% Pacote para botar várias figuras juntas \subfloat[legenda]{\PoeFigura{nome-da-figura}\label{fig:mimim}}
-%\usetikzlibrary{calc,positioning,decorations.pathmorphing,decorations.pathreplacing}
-%\tikzset{emp/.style={double distance = 0.3ex}}
-%\tikzset{oriented/.style={->,shorten >= 1.5pt}}
-%%\usepackage{./Figures/figstyle}
+\usepackage{tikz}
+\usepackage[subrefformat=parens,labelformat=parens]{subcaption}
+\usetikzlibrary{calc,positioning,decorations.pathmorphing,decorations.pathreplacing}
+\tikzset{black vertex/.style={circle,draw,minimum size=1mm,inner sep=0pt,outer sep=2pt,fill=black, color=black}}
+%\tikzset{largepath/.style={orange!75!white,line width=6pt,line cap=round,opacity=0.5}}
 
 %\usepackage{graphicx}
 
@@ -96,6 +94,97 @@ This implies the following:
  into a clique and the branch vertices of an immersion of a clique. 
 \end{theorem}
 
+
+\section{Graphs whose complements admit a special \(3\)-coloring}
+
+\newcommand{\Gcompl}{\overline{G}}
+
+Given a positive integer \(k\),
+a \emph{\(k\)-clique-coloring} of a graph \(G\) is a partition \(\{C_1,\ldots, C_k\}\) of \(V(G)\)
+such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
+Given a graph \(G\), a \emph{countermatching} in \(G\) is a matching in \(\Gcompl\).
+
+\begin{theorem}
+	Let \(G\) be a graph with \(\alpha(G) = 2\)
+	and that admits a \(3\)-clique coloring \(\{C_1,C_2,C_3\}\) such that
+	(i) \(C_1\) is a maximum clique of \(G\); and
+	(ii) \(G[C_2\cup C_3]\) has no induced \(C_4\).
+	Then \(G\) contains an immersion of a clique whose set of branch vertices is precisely \(C_2\cup C_3\).
+\end{theorem}
+
+\begin{proof}
+	Observe that \(C_1,C_2,C_3\) is a \(3\)-coloring of \(\Gcompl\),
+	and by hypothesis \(C_1\) is a maximum independent set of \(\Gcompl\).
+	Let \(i\in\{2,3\}\) and let \(C\subseteq C_i\).
+	If \(|N_{C_1}(C)| < |C|\), 
+	then \((C_1\setminus N_{C_1}(C))\cup C\) is an independent set that is larger than \(C_1\),
+	a contradiction to the maximality of \(C_1\).
+	Then \(|N_{C_1}(C)| \geq |C|\) for any subset of \(C_i\).
+	By Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[C_i,C_1]\) that covers \(C_i\).
+	
+	Given a vertex \(u\in C_2 \cup C_3\), 
+	note that there is precisely one edge in \(M_2\cup M_3\) that contains \(u\),
+	and let \(r_u\in C_1\) be the vertex such that \(ur_u\in M_2\cup M_3\).
+%	We say that \(r_u\) is the \emph{representative} of \(u\).
+	Note that \(r_u \notin N(u)\),
+	and hence, since \(\alpha(G) = 2\), \(r_u\) is adjacent to every vertex in \(V(G)\setminus N[u]\).
+	In what follows, let \(E' = E\big(G[C_2,C_3]\big)\).
+	Note that if \(u\in C_2\) and \(v\in C_3\) are such that \(r_u = r_v = w\),
+	then \(uv \in E'\), otherwise \(u,v,w\) would be an independent set of size \(3\).
+%	
+	Note that if \(uv\notin E'\) we have \(r_u\in N(v)\), \(r_v\in N(u)\),
+	and since \(C_1\) is a clique, \(r_ur_v\in E(G)\).
+
+	Now, for every \(uv\notin E'\), let \(P_{uv}\) be the path \(u r_v r_u v\).
+	We claim that the paths \(P_e\) with \(e\notin E'\) are pairwise edge-disjoint.
+	Indeed, let \(u,u' \in C_2\) and \(v,v' \in C_3\) be such that \(uv,u'v' \notin E'\)
+	and \(uv \neq u'v'\).
+	Note that \(u\) and \(u'\) (resp. \(v\) and \(v'\)) are not necessarily distinct,
+	but either \(u \neq u'\) or \(v \neq v'\).
+	If \(v\neq v'\), then \(r_v \neq r_{v'}\) because \(M_3\) is a matching.
+	This implies that \(ur_v \neq u'r_{v'}\) (even if \(u = u'\)).
+	Analogously, we have \(vr_u \neq v'r_{u'}\).
+	In what follows, we prove that \(r_ur_v \neq r_{u'}r_{v'}\).
+	Suppose, for a contradiction, that \(r_ur_v = r_{u'}r_{v'}\).
+	If \(r_u = r_{u'}\) and \(r_v = r_{v'}\), then \(u=u'\) and \(v=v'\), a contradiction.
+	Thus, we may assume \(r_u = r_{v'}\) and \(r_v = r_{u'}\).
+	As noted above, this implies that \(uv',vu' \in E'\) (see Figure~\ref{fig:induced-C4}).
+	But then \(\{u,v,u',v'\}\) induce a \(C_4\) in \(G[C_2\cup C_3]\),
+	a contradiction .
+\end{proof}
+
+\begin{figure}[ht]
+    \centering
+        \centering
+        \begin{tikzpicture}[scale = 0.8]
+        
+        \node (u)	[black vertex] at	(-2,-1)	{};
+        \node (u')	[black vertex] at	(-2,1)	{};
+        \node (v)	[black vertex] at	(2,-1)	{};
+        \node (v')	[black vertex] at	(2,1)	{};
+        \node (ru)	[black vertex] at	(1,3)	{};
+        \node (rv)	[black vertex] at	(-1,3)	{};
+        
+        \node [anchor=north]	at		(u)		{$u$};
+        \node [anchor=south east]	at		(u')	{$u'$};
+        \node [anchor=north]	at		(v)		{$v$};
+        \node [anchor=south west]	at		(v')	{$v'$};
+        \node [anchor=north]	at		(ru)	{$r_u$};
+        \node [anchor=north]	at		(rv)	{$r_v$};
+        \node [anchor=south east]	at		(ru)	{$r_{v'}$};
+        \node [anchor=south west]	at		(rv)	{$r_{u'}$};
+
+        
+        \draw [thick] (u) -- (u') (v) -- (v') (ru) -- (rv);
+        \draw [thick] (ru) to [bend left = 90] (v) (ru) -- (u');
+        \draw [thick] (rv) to [bend right = 90] (u) (rv) -- (v');
+        \draw [thick,dashed] (u) -- (v) (u') -- (v');
+        \draw [thick] (u) -- (v') (v) -- (u');
+        \draw [thick,dashed] (u) to [bend left = 15] (ru) (v) to [bend right = 15] (rv) (u') to [bend left] (rv) (v') to [bend right] (ru);
+        \end{tikzpicture}
+    \caption{}
+    \label{fig:induced-C4}
+\end{figure}
 %\bibliographystyle{amsplain}
 
 %\bibliography{bibliografia}
