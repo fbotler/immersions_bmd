@@ -31,6 +31,7 @@
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}{Lemma}[section]
 \newtheorem{claim}{Claim}
+\newtheorem{proposition}[theorem]{Proposition}
 
 
 \newcommand{\imm}{\subseteq_{IM}}
@@ -96,6 +97,48 @@ This implies the following:
  The vertex set of the complement of any blow up of an Andrasfai graph can be partitioned 
  into a clique and the branch vertices of an immersion of a clique. 
 \end{theorem}
+
+\section{Andrasfai}
+
+The main result of this paper is
+
+\begin{theorem}
+Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) and \(\Delta(G) \leq 19n/29\).
+Then \(G\) contains an immersion of \(K_{n/2}\).
+\end{theorem}
+
+\newcommand{\andrasfai}{Andrasf\'ai}
+
+Let \(G\) be a triangle-free graph with \(n\) vertices
+\andrasfai~\cite{andrasfal1964graphentheoretische} showed \(\delta(G) > 2n/5\),
+then \(G\) is bipartite.
+This result was generalized in many directions,
+one of which is the following.
+H{\"a}ggkvist~\cite{haggkvist1982odd} proved that if \(\delta(G) > 3n/8\), 
+then \(G\) is \(3\)-colorable,
+and Jin~\cite{jin1995triangle} weakened this minimum degree condition 
+proving that if \(\delta(G) > 10n/29\), 
+then \(G\) is \(3\)-colorable.
+Chen, Jin, and Koh~\cite{chen1997triangle} showed the structure of this graph,
+proving that if \(\delta(G) > 10n/29\),
+then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\in\mathbb{N}\),
+where \(\Gamma_d\) is the graph \((V_d,E_d)\)
+for which \(V_d = [3d-1]\) and \(E_d = \{xy : |x-y| \in [2d-1]\}\).
+
+\begin{theorem}[Chen--Jin--Koh, 1997]\label{thm:ChenJinKoh}
+	If \(G\) is a triangle-free graph with \(n\) vertices
+	for which \(\delta(G) > 10n/29\),
+	then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\).
+\end{theorem}
+
+In this paper we use the following property of the graphs \(\Gamma_d\).
+
+\begin{proposition}
+	Let \(d\in\mathbb{N}\).
+	Then \(\Gamma_d\) admits a \(3\)-coloring \(\{C_1,C_2,C_3\}\)
+	such that (i) \(C_1\) is a maximum independent set of \(G\); and
+	(ii) \(\overline{G}[C_2\cup C_3]\) has no induced \(C_4\)
+\end{proposition}
 
 
 \section{Graphs whose complements admit a special \(3\)-coloring}
@@ -352,17 +395,18 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 \begin{tikzpicture}
 %TODO: Corrigir o caminho e adicionar um outro caminho
 % Clique with 5 vertices in the bottom left corner
-\node[draw, circle, fill=black, inner sep=1pt, label=right:$v_3$] (c1) at (1cm, 0) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=above right:$v_2$] (c2) at (0.309cm, 0.951cm) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=above left:$v_1$] (c3) at (-0.809cm, 0.588cm) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=below left:$v_5$] (c4) at (-0.809cm, -0.588cm) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=below right:$v_4$] (c5) at (0.309cm, -0.951cm) {};
+\node[draw, circle, fill=black, inner sep=1pt, label=south:$v_3$] (c1) at (-18:1) {};
+\node[draw, circle, fill=black, inner sep=1pt, label=north west:$v_2$] (c2) at (54:1) {};
+\node[draw, circle, fill=black, inner sep=1pt, label=north:$v_1$] (c3) at (126:1) {};
+\node[draw, circle, fill=black, inner sep=1pt, label=south:$v_5$] (c4) at (198:1) {};
+\node[draw, circle, fill=black, inner sep=1pt, label=south:$v_4$] (c5) at (-90:1) {};
+\node (C) at (0,0) {C};
 
 \draw (c1) -- (c2);
 \draw (c1) -- (c3) [red, dotted];
 \draw (c1) -- (c4) [red, dotted];
 \draw (c1) -- (c5);
-\draw (c2) -- (c3) node[midway, above left, font=\large] {C};
+\draw (c2) -- (c3);
 \draw (c2) -- (c4) [red, dotted];
 \draw (c2) -- (c5) [red, dotted];
 \draw (c3) -- (c4);
@@ -383,17 +427,18 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 \draw[draw] (2.5, 1) ellipse (0.5 and 0.7);
 \node at (2.5, 1.35) [font=\footnotesize] {$Y_3$};
 \node[draw, circle, fill=black, inner sep=1pt] (y1) at (2.5, 0.8) {};
-\draw[draw] (2.5, -1) ellipse (0.5 and 0.7);
-\node at (2.5, -0.65) [font=\footnotesize] {$Y_1$}; 
-\node[draw, circle, fill=black, inner sep=1pt] (y3) at (2.5, -1.2) {};
+
+\draw[draw] (-2.5, 1) ellipse (0.5 and 0.7);
+\node at (-2.5,1.35) [font=\footnotesize] {$Y_1$}; 
+\node[draw, circle, fill=black, inner sep=1pt] (y3) at (-2.5,0.8) {};
 
 \draw (c1) -- (y1) [blue];
 \draw (c2) -- (y1) [blue];
 \draw (c2) -- (x3) [blue];
 
 \draw (c3) -- (y3) [green];
-\draw (c5) -- (y3) [green];
-\draw (c5) -- (x1) [green];
+\draw (c5) to [bend right = 10] (y3) [green];
+\draw (c5) to [bend right = 5] (x1) [green];
 
 \end{tikzpicture}
 \caption{The current structure, including possible paths from $v_1$ to $X_1$, and from $v_3$ to $X_3$}
@@ -417,6 +462,6 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 
 %\bibliographystyle{amsplain}
 
-%\bibliography{bibliografia}
+\bibliography{refs}
 
 \end{document}
