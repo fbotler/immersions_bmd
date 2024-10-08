@@ -102,8 +102,8 @@ This implies the following:
 
 The main result of this paper is
 
-\begin{theorem}
-Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) and \(\Delta(G) \leq 19n/29\).
+\begin{theorem}\label{thm:main}
+Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) and \(\Delta(G) < 19n/29 - 1\).
 Then \(G\) contains an immersion of \(K_{n/2}\).
 \end{theorem}
 
@@ -243,7 +243,7 @@ Given a positive integer \(k\),
 a \emph{\(k\)-clique-coloring} of a graph \(G\) is a partition \(\{D_1,\ldots, D_k\}\) of \(V(G)\)
 such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 
-\begin{theorem}
+\begin{theorem}\label{thm:graphs_with_special_clique_coloring}
 	Let \(G\) be a graph with \(\alpha(G) = 2\)
 	and that admits a \(3\)-clique coloring \(\{D_1,D_2,D_3\}\) such that
 	(i) \(D_1\) is a maximum clique of \(G\); and
@@ -328,6 +328,26 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
     \caption{}
     \label{fig:induced-C4}
 \end{figure}
+
+Now we can prove our main theorem.
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+	Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\)
+	and \(\Delta(G) < 19n/29 - 1\).
+	Observe that \(\delta(\overline(G)) = (n-1) - \Delta(G) > 10n/29\),
+	and hence, by Lemma~\ref{lemma:andrasfai_blowup_coloring},
+	for any maximum independent set \(I_1\) of \(\Gcompl\),
+	we can find a \(3\)-coloring \(\{I_1,I_2,I_3\}\) of \(\Gcompl\)
+	such that \(G[I_2\cup I_3]\) has no induced \(C_4\).
+	Observe that \(\{I_1,I_2,I_3\}\) 
+	is a \(3\)-clique coloring of \(G\)
+	such that \(I_1\) is a maximal clique and \(G[I_2\cup I_3]\) has no induced \(C_4\).
+	Therefore, by Theorem~\ref{thm:graphs_with_special_clique_coloring},
+	\(G\) contains an immersion \(K\) of a clique whose set of branch vertices is precisely \(I_2\cup I_3\).
+	Now, if \(|I_1| \geq n/2\), then \(I_1\) is the desired immersion,
+	otherwise \(|I_2\cup I_3| = n - |I_1| > n/2\),
+	and \(K\) is the desired immersion.
+\end{proof}
 
 \section{An alternative proof of the existence of immersions of $K_{2n/5}$}
 
