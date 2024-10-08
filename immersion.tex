@@ -28,9 +28,9 @@
 
 \sloppy
 
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}{Lemma}[section]
-\newtheorem{claim}{Claim}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}{Claim}[theorem]
 \newtheorem{proposition}[theorem]{Proposition}
 
 
@@ -98,7 +98,7 @@ This implies the following:
  into a clique and the branch vertices of an immersion of a clique. 
 \end{theorem}
 
-\section{Andrasfai}
+\section{Introduction}
 
 The main result of this paper is
 
@@ -107,23 +107,53 @@ Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) and \(\D
 Then \(G\) contains an immersion of \(K_{n/2}\).
 \end{theorem}
 
+\section{Andrasfai}
+
+
+
 \newcommand{\andrasfai}{Andrasf\'ai}
 
-Let \(G\) be a triangle-free graph with \(n\) vertices
+Let \(G\) be a triangle-free graph with \(n\) vertices.
 \andrasfai~\cite{andrasfal1964graphentheoretische} showed \(\delta(G) > 2n/5\),
 then \(G\) is bipartite.
 This result was generalized in many directions,
 one of which is the following.
+%
 H{\"a}ggkvist~\cite{haggkvist1982odd} proved that if \(\delta(G) > 3n/8\), 
 then \(G\) is \(3\)-colorable,
+%
 and Jin~\cite{jin1995triangle} weakened this minimum degree condition 
 proving that if \(\delta(G) > 10n/29\), 
 then \(G\) is \(3\)-colorable.
-Chen, Jin, and Koh~\cite{chen1997triangle} showed the structure of this graph,
-proving that if \(\delta(G) > 10n/29\),
+%
+Chen, Jin, and Koh~\cite{chen1997triangle} strenghtened Jin's result
+showing that \(G\) is \(3\)-colorable by exposing the structure of the graph.
+More specifically, they proved that if \(\delta(G) > 10n/29\),
 then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\in\mathbb{N}\),
 where \(\Gamma_d\) is the graph \((V_d,E_d)\)
-for which \(V_d = [3d-1]\) and \(E_d = \{xy : |x-y| \in [2d-1]\}\).
+% TODO verificar se esta definição de \Gamma_d está correta
+for which \(V_d = [3d-1]\) and \(E_d = \left\{xy : y = x + i \text{ with } i \in [d,2d-1]\right\}\),
+where the sum is taken modulo \(3d-1\).
+
+\begin{figure}[ht]
+    \centering
+        \centering
+        \begin{tikzpicture}[scale = 0.8]
+        
+        \foreach \u in {1,...,18}{
+		 \node [black vertex] (\u) at (360/11 * \u:2cm) {};
+      	}
+      	
+      	\foreach \u in {1,...,7}{
+      		\foreach \i in {4,...,7}{
+      			\pgfmathsetmacro{\v}{\u + \i};
+      			\draw [thick] (\u) -- (\v);
+      		}
+      	}
+        \end{tikzpicture}
+    \caption{The Andrasfái graph $\Gamma_4$.}
+    \label{fig:andrasfai_graph}
+\end{figure}
 
 \begin{theorem}[Chen--Jin--Koh, 1997]\label{thm:ChenJinKoh}
 	If \(G\) is a triangle-free graph with \(n\) vertices
@@ -133,12 +163,43 @@ for which \(V_d = [3d-1]\) and \(E_d = \{xy : |x-y| \in [2d-1]\}\).
 
 In this paper we use the following property of the graphs \(\Gamma_d\).
 
+%\begin{proposition}
+%	Let \(d\in\mathbb{N}\).
+%	Then \(\Gamma_d\) admits a \(3\)-coloring \(\{D_1,D_2,D_3\}\)
+%	such that (i) \(D_1\) is a maximum independent set of \(G\); and
+%	(ii) \(\overline{G}[D_2\cup D_3]\) has no induced \(C_4\).
+%\end{proposition}
+
+
+%TODO Verificar se a troca de C_i para D_i foi feita corretamente
+
 \begin{proposition}
-	Let \(d\in\mathbb{N}\).
-	Then \(\Gamma_d\) admits a \(3\)-coloring \(\{C_1,C_2,C_3\}\)
-	such that (i) \(C_1\) is a maximum independent set of \(G\); and
-	(ii) \(\overline{G}[C_2\cup C_3]\) has no induced \(C_4\)
+	Let \(d\in\mathbb{N}\),
+	and let \(D_1\) be a maximal independent set of \(\Gamma_d\).
+	Then \(\Gamma_d\) admits a \(3\)-coloring \(\{D_1,D_2,D_3\}\)
+	such that \(\overline{G}[D_2\cup D_3]\) has no induced \(C_4\).
 \end{proposition}
+
+\begin{proof}
+	Let \(d\) and \(\Gamma_d\) as above.
+	We first observe that the maximal independent sets of \(\Gamma_d\)
+	consist precisely of sequences of \(d\) consecutive (modulo \(3d-1\)) vertices of \(\Gamma_d\).
+	Indeed,	by the definition of \(E_d\), \(u\) and \(v\) are adjacent 
+	if and only if \(u\) and \(v\) have (circular) distance at least \(d\).
+	Now, let \(D_1\) a maximum independent set of \(\Gamma_d\).
+	Assume, without loss of generality, that \(D_1 = \{1,\ldots,d\}\).
+	Let \(D_2 = \{d+1,\ldots,2d\}\) and \(D_3 = \{2d+1,\ldots, 3d-1\}\).
+	As observed above, \(D_2\) and \(D_3\) are indepedent sets of \(\Gamma_d\).
+	By the definition of \(E_d\), if \(u,u'\in D_2\),
+	then either \(N_{D_3}(u) \subseteq N_{D_3}(u')\) or \(N_{D_3}(u') \subseteq N_{D_3}(u)\).
+	Now, we claim that \(\overline{G}[D_2\cup D_3]\) has no induced \(C_4\).
+	This is equivalent to prove that \(G[D_2\cup D_3]\) has no induced matching with two edges.
+	Suppose, for a contradiction that \(G[D_2\cup D_3]\) has an induced matching with two edges \(M\).
+	Since \(D_2\) and \(D_3\) are independent sets, the edges of \(M\) must join vertices from \(D_2\) to vertices of \(D_3\).
+	Thus, \(M = \{e,e'\}\) with \(e = uv\) and \(e' = u'v'\) with \(u,u' \in D_2\) and \(v,v'\in D_3\).
+	Assume, without loss of generality, \(N_{D_3}(u') \subseteq N_{D_3}(u)\),
+	then we have \(v' \in N_{D_3}(u)\), and hence \(G[\{u,u',v,v'\}\) is not an induced matching.
+\end{proof}
 
 
 \section{Graphs whose complements admit a special \(3\)-coloring}
@@ -146,43 +207,43 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 \newcommand{\Gcompl}{\overline{G}}
 
 Given a positive integer \(k\),
-a \emph{\(k\)-clique-coloring} of a graph \(G\) is a partition \(\{C_1,\ldots, C_k\}\) of \(V(G)\)
+a \emph{\(k\)-clique-coloring} of a graph \(G\) is a partition \(\{D_1,\ldots, D_k\}\) of \(V(G)\)
 such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 
 \begin{theorem}
 	Let \(G\) be a graph with \(\alpha(G) = 2\)
-	and that admits a \(3\)-clique coloring \(\{C_1,C_2,C_3\}\) such that
-	(i) \(C_1\) is a maximum clique of \(G\); and
-	(ii) \(G[C_2\cup C_3]\) has no induced \(C_4\).
-	Then \(G\) contains an immersion of a clique whose set of branch vertices is precisely \(C_2\cup C_3\).
+	and that admits a \(3\)-clique coloring \(\{D_1,D_2,D_3\}\) such that
+	(i) \(D_1\) is a maximum clique of \(G\); and
+	(ii) \(G[D_2\cup D_3]\) has no induced \(C_4\).
+	Then \(G\) contains an immersion of a clique whose set of branch vertices is precisely \(D_2\cup D_3\).
 \end{theorem}
 
 \begin{proof}
-	Observe that \(C_1,C_2,C_3\) is a \(3\)-coloring of \(\Gcompl\),
-	and by hypothesis \(C_1\) is a maximum independent set of \(\Gcompl\).
+	Observe that \(D_1,D_2,D_3\) is a \(3\)-coloring of \(\Gcompl\),
+	and by hypothesis \(D_1\) is a maximum independent set of \(\Gcompl\).
 	Let \(i\in\{2,3\}\) and let \(C\subseteq C_i\).
-	If \(|N_{C_1}(C)| < |C|\), 
-	then \((C_1\setminus N_{C_1}(C))\cup C\) is an independent set that is larger than \(C_1\),
-	a contradiction to the maximality of \(C_1\).
-	Then \(|N_{C_1}(C)| \geq |C|\) for any subset of \(C_i\).
-	By Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[C_i,C_1]\) that covers \(C_i\).
+	If \(|N_{D_1}(C)| < |C|\), 
+	then \((D_1\setminus N_{D_1}(C))\cup C\) is an independent set that is larger than \(D_1\),
+	a contradiction to the maximality of \(D_1\).
+	Then \(|N_{D_1}(C)| \geq |C|\) for any subset of \(C_i\).
+	By Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[C_i,D_1]\) that covers \(C_i\).
 	
-	Given a vertex \(u\in C_2 \cup C_3\), 
+	Given a vertex \(u\in D_2 \cup D_3\), 
 	note that there is precisely one edge in \(M_2\cup M_3\) that contains \(u\),
-	and let \(r_u\in C_1\) be the vertex such that \(ur_u\in M_2\cup M_3\).
+	and let \(r_u\in D_1\) be the vertex such that \(ur_u\in M_2\cup M_3\).
 %	We say that \(r_u\) is the \emph{representative} of \(u\).
 	Note that \(r_u \notin N(u)\),
 	and hence, since \(\alpha(G) = 2\), \(r_u\) is adjacent to every vertex in \(V(G)\setminus N[u]\).
-	In what follows, let \(E' = E\big(G[C_2,C_3]\big)\).
-	Note that if \(u\in C_2\) and \(v\in C_3\) are such that \(r_u = r_v = w\),
+	In what follows, let \(E' = E\big(G[D_2,D_3]\big)\).
+	Note that if \(u\in D_2\) and \(v\in D_3\) are such that \(r_u = r_v = w\),
 	then \(uv \in E'\), otherwise \(u,v,w\) would be an independent set of size \(3\).
 %	
 	Note that if \(uv\notin E'\) we have \(r_u\in N(v)\), \(r_v\in N(u)\),
-	and since \(C_1\) is a clique, \(r_ur_v\in E(G)\).
+	and since \(D_1\) is a clique, \(r_ur_v\in E(G)\).
 
 	Now, for every \(uv\notin E'\), let \(P_{uv}\) be the path \(u r_v r_u v\).
 	We claim that the paths \(P_e\) with \(e\notin E'\) are pairwise edge-disjoint.
-	Indeed, let \(u,u' \in C_2\) and \(v,v' \in C_3\) be such that \(uv,u'v' \notin E'\)
+	Indeed, let \(u,u' \in D_2\) and \(v,v' \in D_3\) be such that \(uv,u'v' \notin E'\)
 	and \(uv \neq u'v'\).
 	Note that \(u\) and \(u'\) (resp. \(v\) and \(v'\)) are not necessarily distinct,
 	but either \(u \neq u'\) or \(v \neq v'\).
@@ -194,12 +255,12 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 	If \(r_u = r_{u'}\) and \(r_v = r_{v'}\), then \(u=u'\) and \(v=v'\), a contradiction.
 	Thus, we may assume \(r_u = r_{v'}\) and \(r_v = r_{u'}\).
 	As noted above, this implies that \(uv',vu' \in E'\) (see Figure~\ref{fig:induced-C4}).
-	But then \(\{u,v,u',v'\}\) induce a \(C_4\) in \(G[C_2\cup C_3]\),
+	But then \(\{u,v,u',v'\}\) induce a \(C_4\) in \(G[D_2\cup D_3]\),
 	a contradiction.
 	
-	Since \(C_2\) and \(C_3\) are cliques,
+	Since \(D_2\) and \(D_3\) are cliques,
 	and the paths \(P_e\) with \(e\notin E'\) are edge-disjoint,
-	\(G[C_2\cup C_3]\cup\{P_e : e\notin E'\}\) is the desired immersion.
+	\(G[D_2\cup D_3]\cup\{P_e : e\notin E'\}\) is the desired immersion.
 \end{proof}
 
 \begin{figure}[ht]
@@ -395,11 +456,11 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 \begin{tikzpicture}
 %TODO: Corrigir o caminho e adicionar um outro caminho
 % Clique with 5 vertices in the bottom left corner
-\node[draw, circle, fill=black, inner sep=1pt, label=south:$v_3$] (c1) at (-18:1) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=north west:$v_2$] (c2) at (54:1) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=north:$v_1$] (c3) at (126:1) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=south:$v_5$] (c4) at (198:1) {};
-\node[draw, circle, fill=black, inner sep=1pt, label=south:$v_4$] (c5) at (-90:1) {};
+\node[black vertex, label=south:$v_3$] (c1) at (-18:1) {};
+\node[black vertex, label=north west:$v_2$] (c2) at (54:1) {};
+\node[black vertex, label=north:$v_1$] (c3) at (126:1) {};
+\node[black vertex, label=south:$v_5$] (c4) at (198:1) {};
+\node[black vertex, label=south:$v_4$] (c5) at (-90:1) {};
 \node (C) at (0,0) {C};
 
 \draw (c1) -- (c2);
@@ -418,19 +479,19 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 \draw (-0.7,2.38) -- (-0.7,3.62);
 \draw (0.7,2.38) -- (0.7,3.62);
 \node at (-1, 3.2) {$X_1$};
-\node[draw, circle, fill=black, inner sep=1pt] (x1) at (-1, 2.8) {};
+\node[black vertex] (x1) at (-1, 2.8) {};
 \node at (-1.7, 3.6) [font=\large] {$I$}; 
 \node at (1, 3.2) {$X_3$}; 
-\node[draw, circle, fill=black, inner sep=1pt] (x3) at (1, 2.8) {};
+\node[black vertex] (x3) at (1, 2.8) {};
 
 % Two ellipses on the bottom right
 \draw[draw] (2.5, 1) ellipse (0.5 and 0.7);
 \node at (2.5, 1.35) [font=\footnotesize] {$Y_3$};
-\node[draw, circle, fill=black, inner sep=1pt] (y1) at (2.5, 0.8) {};
+\node[black vertex] (y1) at (2.5, 0.8) {};
 
 \draw[draw] (-2.5, 1) ellipse (0.5 and 0.7);
 \node at (-2.5,1.35) [font=\footnotesize] {$Y_1$}; 
-\node[draw, circle, fill=black, inner sep=1pt] (y3) at (-2.5,0.8) {};
+\node[black vertex] (y3) at (-2.5,0.8) {};
 
 \draw (c1) -- (y1) [blue];
 \draw (c2) -- (y1) [blue];
