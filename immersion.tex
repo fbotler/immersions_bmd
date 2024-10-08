@@ -126,7 +126,7 @@ and Jin~\cite{jin1995triangle} weakened this minimum degree condition
 proving that if \(\delta(G) > 10n/29\), 
 then \(G\) is \(3\)-colorable.
 %
-Chen, Jin, and Koh~\cite{chen1997triangle} strenghtened Jin's result
+Chen, Jin, and Koh~\cite{chen1997triangle} strengthened Jin's result
 showing that \(G\) is \(3\)-colorable by exposing the structure of the graph.
 More specifically, they proved that if \(\delta(G) > 10n/29\),
 then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\in\mathbb{N}\),
@@ -173,13 +173,14 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 
 %TODO Verificar se a troca de C_i para D_i foi feita corretamente
 
-\begin{proposition}
+\begin{lemma}\label{lemma:andrasfai_coloring}
 	Let \(d\in\mathbb{N}\),
 	and let \(D_1\) be a maximal independent set of \(\Gamma_d\).
 	Then \(\Gamma_d\) admits a \(3\)-coloring \(\{D_1,D_2,D_3\}\)
-	such that \(\overline{G}[D_2\cup D_3]\) has no induced \(C_4\).
-\end{proposition}
+	such that \(\overline{\Gamma_d}[D_2\cup D_3]\) has no induced \(C_4\).
+\end{lemma}
 
+%TODO: verificar se G aparece. Não deveria aparecer.
 \begin{proof}
 	Let \(d\) and \(\Gamma_d\) as above.
 	We first observe that the maximal independent sets of \(\Gamma_d\)
@@ -189,16 +190,48 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 	Now, let \(D_1\) a maximum independent set of \(\Gamma_d\).
 	Assume, without loss of generality, that \(D_1 = \{1,\ldots,d\}\).
 	Let \(D_2 = \{d+1,\ldots,2d\}\) and \(D_3 = \{2d+1,\ldots, 3d-1\}\).
-	As observed above, \(D_2\) and \(D_3\) are indepedent sets of \(\Gamma_d\).
+	As observed above, \(D_2\) and \(D_3\) are independent sets of \(\Gamma_d\).
 	By the definition of \(E_d\), if \(u,u'\in D_2\),
 	then either \(N_{D_3}(u) \subseteq N_{D_3}(u')\) or \(N_{D_3}(u') \subseteq N_{D_3}(u)\).
-	Now, we claim that \(\overline{G}[D_2\cup D_3]\) has no induced \(C_4\).
-	This is equivalent to prove that \(G[D_2\cup D_3]\) has no induced matching with two edges.
-	Suppose, for a contradiction that \(G[D_2\cup D_3]\) has an induced matching with two edges \(M\).
+	Now, we claim that \(\overline{\Gamma_d}[D_2\cup D_3]\) has no induced \(C_4\).
+	This is equivalent to prove that \(\Gamma_d[D_2\cup D_3]\) has no induced matching with two edges.
+	Suppose, for a contradiction that \(\Gamma_d[D_2\cup D_3]\) has an induced matching with two edges \(M\).
 	Since \(D_2\) and \(D_3\) are independent sets, the edges of \(M\) must join vertices from \(D_2\) to vertices of \(D_3\).
 	Thus, \(M = \{e,e'\}\) with \(e = uv\) and \(e' = u'v'\) with \(u,u' \in D_2\) and \(v,v'\in D_3\).
 	Assume, without loss of generality, \(N_{D_3}(u') \subseteq N_{D_3}(u)\),
-	then we have \(v' \in N_{D_3}(u)\), and hence \(G[\{u,u',v,v'\}\) is not an induced matching.
+	then we have \(v' \in N_{D_3}(u)\), and hence \(\Gamma_d[\{u,u',v,v'\}]\) is not an induced matching.
+\end{proof}
+
+\begin{lemma}\label{lemma:andrasfai_blowup_coloring}
+	Let \(G\) a maximal triangle-free graph that is homomorphic to \(\Gamma_d\)
+	for some \(d\in \mathbb{N}\),
+	and let \(I_1\) a maximum independent set of \(G\).
+	Then \(G\) admits a \(3\)-coloring \(\{I_1,I_2,I_3\}\)
+	such that \(\overline{G}[I_2\cup I_3]\) has no induced \(C_4\).
+\end{lemma}
+
+\begin{proof}
+	Let \(h \colon V(G) \to V(\Gamma_d)\) be a homomorphism from \(G\) to \(\Gamma_d\).
+	For each \(i\in [3d-1]\) let \(V_i = h^{-1}(i) = \{u\in V(G) : h(u) = i\}\)
+	the set of vertices of \(G\) mapped to \(i\).
+	Note that every independent set of \(G\) is mapped to an independent set of \(\Gamma_d\).
+	Moreover, every maximal independent set of \(G\) is mapped to a maximal independent set of \(\Gamma_d\).
+	Now, let \(I_1\) be a maximum independent set of \(G\).
+	Then \(D_1 = h(I_1) = \{h(u) : u \in I_1\}\) is a maximal independent set of \(\Gamma_d\).
+	Let \(\{D_1,D_2,D_3\}\) be the coloring of \(\Gamma_d\) given by Lemma~\ref{lemma:andrasfai_coloring},
+	and, for \(i = 2,3\), let \(I_i = h^{-1}(D_i) = \{u \in V(G) : h(u) \in D_i\}\).
+	Naturally, \(I_i\) is an independent set for \(i = 1,2,3\),
+	and, since \(V(\Gamma_d) = D_1\cup D_2\cup D_3\),
+	we have \(V(G) = I_1 \cup I_2 \cup I_3\).
+	Since \(\Gamma_d\) is triangle-free,
+	by the maximality of \(G\), 
+	we have that \(uv\in E(G)\) if and only if \(h(u)h(v)\in E_d\).
+	Now if \(G[\{u,u',v,v'\}]\) is an induced matching with two edges
+	then we can assume, without loss of generality,
+	that \(u,u' \in I_2\) and \(v,v'\in I_3\).
+	Moreover, \(u\) and \(u'\) (resp. \(v\) and \(v'\)) are in different \(V_i\)'s.
+	But this implies that \(\Gamma_d[h(\{u,u',v,v'\})]\) is an induced matching with two edges,
+	a contradiction.
 \end{proof}
 
 
@@ -507,9 +540,9 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 
 
 %TODO: Verificar o inglês se estamos usando americano (neighbors) ou britânico (neighbours) e padronizar. Em geral preferimos o americano.
-    Finally, note that every vertex in $V(G)\setminus(I\cup V(C)\cup Z_2)$ has two neighbours in $\{v_2, v_4, v_5\}$.
-    Moreover, every vertex in $X_1\cup X_3$ has two neighbours in $\{v_2, v_4, v_5\}$.
-    Therefore, every pair of vertices $u,w$ with $u\in X_1\cup X_3$ and $w\in Y_1\cup Y_3$ has at least one common neighbour in $v_{uw}\in\{v_2, v_4, v_5\}$.
+    Finally, note that every vertex in $V(G)\setminus(I\cup V(C)\cup Z_2)$ has two neighbors in $\{v_2, v_4, v_5\}$.
+    Moreover, every vertex in $X_1\cup X_3$ has two neighbors in $\{v_2, v_4, v_5\}$.
+    Therefore, every pair of vertices $u,w$ with $u\in X_1\cup X_3$ and $w\in Y_1\cup Y_3$ has at least one common neighbor in $v_{uw}\in\{v_2, v_4, v_5\}$.
 
     Now, let \(X_1 = \{x_1,\ldots,x_{\ell_1}\}\) and \(Y_1 = \{y_1,\ldots,y_{\ell_1}\}\),
     and for each \(i \in \{1,\ldots,\ell_1\}\), let \(P_{v_1 x_i} = v_1 y_i v_{x_iy_i} x_i\) a path joining \(v_1\) to \(x_i\).
