@@ -146,8 +146,8 @@ where the sum is taken modulo \(3d-1\).
       	
       	\foreach \u in {1,...,7}{
       		\foreach \i in {4,...,7}{
-      			\pgfmathsetmacro{\v}{\u + \i};
-      			\draw [thick] (\u) -- (\v);
+      			\pgfmathtruncatemacro{\v}{\u + \i};
+      			\draw [thick] (\u) to (\v);
       		}
       	}
         \end{tikzpicture}
