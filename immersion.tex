@@ -29,12 +29,14 @@
 \sloppy
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{claim}{Claim}[theorem]
 \newtheorem{proposition}[theorem]{Proposition}
 
 
 \newcommand{\imm}{\subseteq_{IM}}
+\newcommand{\ifun}{{\rm i}}
 
 \bibliographystyle{plain}
 
@@ -47,7 +49,7 @@
 
 %\usepackage{graphicx}
 
-\title{Immersions of cliques in graphs \\ with bounded maximum degree}
+\title{Immersions of cliques in graphs \\ with independence number \(2\) \\ and bounded maximum degree}
 
 \begin{document}
 
@@ -100,12 +102,73 @@ This implies the following:
 
 \section{Introduction}
 
-The main result of this paper is
+In this paper, every graph is simple, i.e., contains no loops or multiple edges.
+An immersion of a graph \(H\) in a graph \(G\)
+is a subgraph \(I\) of \(G\) for which there is a bijection \(\ifun \colon V(H) \to V(I)\)
+and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
+such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
+
+Much work has been done in searching for given subgraphs in dense graphs.
+Hadwiger's Conjecture~\cite{hadwiger1943klassifikation}, for example,
+states that every graph \(G\) contains \(K_{\chi(G)}\) as a minor,
+where \(\chi(G)\) is the usual chromatic number of \(G\).
+Equivalently, Hadwiger's Conjecture says that every graph has chromatic number at most \(t\)
+or can be contracted to the complete graph with \(t+1\) vertices.
+Although it has been verified for graphs with chromatic number at most \(6\)~\cite{robertson1993hadwiger}, it is still open.
+
+Some special attention has been given to the case of graphs with chromatic number \(2\)~\cite{seymour2016hadwiger},
+for which the existence of a minor of \(K_{\chi(G)}\) is equivalent to the existence of a minor of \(K_{n/2}\) (see~\cite{plummer2003special}).
+
+In this paper, we are interested in the following immersion analog of Hadwiger's Conjecture posed by Lescure and Meyniel~\cite{lescure41problem}.
+
+\begin{conjecture}[Lescure--Meyniel,1985]\label{conj:LescureMeyniel}
+	Every graph \(G\) contains an immersion of \(K_{\chi(G)}\).
+\end{conjecture}
+
+In this paper we are concerned with the particular case of graphs with independence number \(2\),
+which is motivated by the following.
+In 2017, Vergara~\cite{vergara2017complete} proved that there every graph \(G\) with independence number \(2\)
+contains an immersion of \(K_{\chi(G)}\) if and only if every graph graph with independence number \(2\) contains an immersion of \(K_{n/2}\). 
+In other words, in the case of graphs with independence number \(2\),
+Conjecture~\ref{conj:LescureMeyniel} is equivalent to the following conjecture.
+
+
+\begin{conjecture}[Vergara, 2017]\label{conj:vergara}
+	Every graph with \(n\) vertices an independence number \(2\)
+	contains an immersion of \(K_{n/2}\).
+\end{conjecture}
+
+In particular, Vergara~\cite{vergara2017complete} proved a weakening of Conjecture~\ref{conj:vergara} that every graph with \(n\) vertices and independence number \(2\)
+has an immersion of \(K_{n/3}\).
+This result was improved by Gauthier et al.~\cite{gauthier2019forcing},
+that proved that every such graph contains an immersion of \(K_{2\lfloor n/5\rfloor}\).
+
+\begin{theorem}[Gauthier--Le--Wollan, 2019]\label{thm:gauthier}.
+	Every graph with \(n\) vertices an independence number \(2\)
+	contains an immersion of \(K_{2\lfloor n/5\rfloor}\).
+\end{theorem}
+
+In 2024, Botler et. al.~\cite{botler2024biclique} proved that every such graph
+contains the immersion of every complete bipartite graph with \(n/2\) vertices;
+and in another direction, Quiroz~\cite{quiroz2021clique} verified Cojecture~\ref{conj:vergara} for graphs with special forbidden subgraphs.
+In this paper we verify Conjecture~\ref{conj:vergara} for graphs with bounded maximum degree
+as follows.
 
 \begin{theorem}\label{thm:main}
-Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) and \(\Delta(G) < 19n/29 - 1\).
+Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) 
+and \(\Delta(G) < 19n/29 - 1\).
 Then \(G\) contains an immersion of \(K_{n/2}\).
 \end{theorem}
+
+In fact, we prove that \(V(G)\) can be partitioned into two sets \(A\), \(B\)
+such that \(A\) is a clique of \(G\) and \(G\) contains an immersion of a clique whose
+branch vertices are precisely \(B\).
+
+Our proof explores properties of the complement of the studied graph.
+More specifically, we use the fact that triangle-free graphs 
+with high minimum degree at homomorphic to the so-called Andrasfái graphs.
+
+As an addition to this result, we present a somewhat simpler proof of Theorem~\ref{thm:gauthier}.
 
 \section{Andrasfai}
 
