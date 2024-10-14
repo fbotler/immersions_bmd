@@ -64,7 +64,7 @@ and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\)
 such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
 The immersion analog of Hadwiger's Conjecture, posed by Lescure and Meyniel 
 [On a problem upon configurations contained in graphs
-with given chromatic number, graph theory in memory of ga dirac (sandbjerg, 1985),
+with given chromatic number, Graph theory in memory of GA Dirac, (sandbjerg, 1985),
 325–331. Ann. Discrete Math, 41.],
 says that every graph \(G\) contains an immersion of \(K_{\chi(G)}\).
 Its restriction to graphs with independence number \(2\)
@@ -81,52 +81,6 @@ then \(G\) contains an immersion of \(K_{n/2}\).
 
 
 
-\section{Andrasfai graphs and its relatives}
-
-Andrasfai graphs are well-known triangle-free graphs. 
-Any blow-up of an Andrasfai graph is also triangle-free.
-So the complement of these graphs have independence number at most 2. 
-In what follows we study immersions of cliques in this class of graphs. 
- 
-Let \(k\) be a positive integer, and let \(F_k\) be the Andrasfai graph of order $k$.
-Note that \(h = v(F_k) = 3k-1\) and \(\omega(F_k) = k\).
-Let \(G\) be a graph such that \(\overline{G}\) is a blow-up of \(F_k\), 
-and let \(V_1,\ldots, V_h\) be the blow-up vertex classes.
-Say \(G\) has \(n\) vertices.
-Let \(K\) be a maximum clique in \(G\).
-One can prove that \(V(K)\) is the disjoint union of precisely \(k\) of the blow-up vertex classes.
-Moreover we may assume without loss of generality that \(V(K) = \cup_{i=0}^{k-1} V_{3i+1}\).
-In what follows, we find an immersion in \(G\) of a clique in which the branch vertices are 
-precisely \(V(G)\setminus V(K)\).
-
-Let \(I = \{2,3,5,6,\ldots,3k-4,3k-3\}\) be the indices of the blow-up vertex classes
-corresponding to \(V(G)\setminus V(K)\).
-We say a family \(\{A_i: i \in I\}\) of subsets of \(V(K)\) is a \emph{helpful set family} 
-if it satisfies the following conditions for every \(i \in I\):
-\begin{enumerate}
-\item \(|A_i| = |V_i|\);
-\item \(A_i \subseteq \overline{N_G(V_i)} \cap V(K)\);
-\item the sets \(A_j\) with \(j \in N_{F_k}[i]\cap I\) are mutually disjoint, 
-  that is, if \(j,j' \in N_{F_k}[i] \cap I\), then \(A_j\cap A_{j'} = \emptyset\).
-\end{enumerate}
-
-\begin{lemma}
-  If \(G\) has a helpful set family, then there is an immersion in \(G\) of 
-  a clique in which the branch vertices are precisely \(V(G)\setminus V(K)\).
-\end{lemma}
-
-\begin{lemma}
-  Graph \(G\) has a helpful set family. 
-\end{lemma}
-
-This implies the following: 
-
-\begin{theorem}
- The vertex set of the complement of any blow up of an Andrasfai graph can be partitioned 
- into a clique and the branch vertices of an immersion of a clique. 
-\end{theorem}
-
-\section{Introduction}
 
 In this paper, every graph is simple, i.e., contains no loops or multiple edges.
 An immersion of a graph \(H\) in a graph \(G\)
@@ -176,12 +130,12 @@ that proved that every such graph contains an immersion of \(K_{2\lfloor n/5\rfl
 
 In 2024, Botler et. al.~\cite{botler2024biclique} proved that every such graph
 contains the immersion of every complete bipartite graph with \(n/2\) vertices;
-and in another direction, Quiroz~\cite{quiroz2021clique} verified Cojecture~\ref{conj:vergara} for graphs with special forbidden subgraphs.
+and in another direction, Quiroz~\cite{quiroz2021clique} verified Conjecture~\ref{conj:vergara} for graphs with special forbidden subgraphs.
 
 One can expect that vertices of high degree helps when finding for large clique immersions.
 For example, one of the first steps of Vergara's proof of the existence of \(K_{n/3}\) immersions
 in graphs with independence number \(2\) is to show that its minimum degree is at least \(2n/3\);
-and, analogously, in the proo fof Theorem~\ref{thm:gauthier} one proves that the minimum degree is at least \(3n/5\). 
+and, analogously, in the proof of Theorem~\ref{thm:gauthier} one proves that the minimum degree is at least \(3n/5\). 
 In this paper we consider graphs without vertices of large degree.
 More specifically, we verify Conjecture~\ref{conj:vergara} for graphs with bounded maximum degree
 as follows.
@@ -429,19 +383,22 @@ Now we can prove our main theorem.
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
 	Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\)
 	and \(\Delta(G) < 19n/29 - 1\).
-	Observe that \(\delta(\overline(G)) = (n-1) - \Delta(G) > 10n/29\),
-	and hence, by Lemma~\ref{lemma:andrasfai_blowup_coloring},
-	for any maximum independent set \(I_1\) of \(\Gcompl\),
+	Observe that \(\delta(\Gcompl) = (n-1) - \Delta(G) > 10n/29\),
+	and hence, 
+	by Theorem~\ref{thm:ChenJinKoh}, \(\Gcompl\) is homomorphic to \(\Gamma_d\) for some \(d\).	
+%	
+	Now, let \(I_1\) be a maximum independent set of \(\Gcompl\).
+	If \(|I_1| \geq n/2\), then \(I_1\) is the desired immersion.
+	Thus, assume \(|I_1| < n/2\).
+	By Lemma~\ref{lemma:andrasfai_blowup_coloring},
 	we can find a \(3\)-coloring \(\{I_1,I_2,I_3\}\) of \(\Gcompl\)
 	such that \(G[I_2\cup I_3]\) has no induced \(C_4\).
 	Observe that \(\{I_1,I_2,I_3\}\) 
 	is a \(3\)-clique coloring of \(G\)
 	such that \(I_1\) is a maximal clique and \(G[I_2\cup I_3]\) has no induced \(C_4\).
 	Therefore, by Theorem~\ref{thm:graphs_with_special_clique_coloring},
-	\(G\) contains an immersion \(K\) of a clique whose set of branch vertices is precisely \(I_2\cup I_3\).
-	Now, if \(|I_1| \geq n/2\), then \(I_1\) is the desired immersion,
-	otherwise \(|I_2\cup I_3| = n - |I_1| > n/2\),
-	and \(K\) is the desired immersion.
+	\(G\) contains an immersion of a clique whose set of branch vertices is precisely \(I_2\cup I_3\).
+	The statement follows because \(|I_2 \cup I_3| = n - |I_1| > n/2\).
 \end{proof}
 
 \section{An alternative proof of the existence of immersions of $K_{2n/5}$}
@@ -672,5 +629,50 @@ Now we can prove our main theorem.
 %\bibliographystyle{amsplain}
 
 \bibliography{refs}
+
+\section{Andrasfai graphs and its relatives}
+
+Andrasfai graphs are well-known triangle-free graphs. 
+Any blow-up of an Andrasfai graph is also triangle-free.
+So the complement of these graphs have independence number at most 2. 
+In what follows we study immersions of cliques in this class of graphs. 
+ 
+Let \(k\) be a positive integer, and let \(F_k\) be the Andrasfai graph of order $k$.
+Note that \(h = v(F_k) = 3k-1\) and \(\omega(F_k) = k\).
+Let \(G\) be a graph such that \(\overline{G}\) is a blow-up of \(F_k\), 
+and let \(V_1,\ldots, V_h\) be the blow-up vertex classes.
+Say \(G\) has \(n\) vertices.
+Let \(K\) be a maximum clique in \(G\).
+One can prove that \(V(K)\) is the disjoint union of precisely \(k\) of the blow-up vertex classes.
+Moreover we may assume without loss of generality that \(V(K) = \cup_{i=0}^{k-1} V_{3i+1}\).
+In what follows, we find an immersion in \(G\) of a clique in which the branch vertices are 
+precisely \(V(G)\setminus V(K)\).
+
+Let \(I = \{2,3,5,6,\ldots,3k-4,3k-3\}\) be the indices of the blow-up vertex classes
+corresponding to \(V(G)\setminus V(K)\).
+We say a family \(\{A_i: i \in I\}\) of subsets of \(V(K)\) is a \emph{helpful set family} 
+if it satisfies the following conditions for every \(i \in I\):
+\begin{enumerate}
+\item \(|A_i| = |V_i|\);
+\item \(A_i \subseteq \overline{N_G(V_i)} \cap V(K)\);
+\item the sets \(A_j\) with \(j \in N_{F_k}[i]\cap I\) are mutually disjoint, 
+  that is, if \(j,j' \in N_{F_k}[i] \cap I\), then \(A_j\cap A_{j'} = \emptyset\).
+\end{enumerate}
+
+\begin{lemma}
+  If \(G\) has a helpful set family, then there is an immersion in \(G\) of 
+  a clique in which the branch vertices are precisely \(V(G)\setminus V(K)\).
+\end{lemma}
+
+\begin{lemma}
+  Graph \(G\) has a helpful set family. 
+\end{lemma}
+
+This implies the following: 
+
+\begin{theorem}
+ The vertex set of the complement of any blow up of an Andrasfai graph can be partitioned 
+ into a clique and the branch vertices of an immersion of a clique. 
+\end{theorem}
 
 \end{document}
