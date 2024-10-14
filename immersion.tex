@@ -51,11 +51,35 @@
 
 \title{Immersions of cliques in graphs \\ with independence number \(2\) \\ and bounded maximum degree}
 
-\author{Fábio Botler \and Cristina G. Fernandes \and Carla Negri Lintzmayer \and Rui Aldé Lopes \and Suchismita Mishra  \and Bruno L. Netto  \and Maycon Sambinelli}
+\author{Fábio Botler \and Cristina G. Fernandes \and Carla N. Lintzmayer \and Rui Aldé Lopes \and Suchismita Mishra  \and Bruno L. Netto  \and Maycon Sambinelli}
 
 \begin{document}
 
 \maketitle
+
+\begin{abstract}
+An immersion of a graph \(H\) in a graph \(G\)
+is a subgraph \(I\) of \(G\) for which there is an injection \(\ifun \colon V(H) \to V(I)\)
+and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
+such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
+The immersion analog of Hadwiger's Conjecture, posed by Lescure and Meyniel 
+[On a problem upon configurations contained in graphs
+with given chromatic number, graph theory in memory of ga dirac (sandbjerg, 1985),
+325–331. Ann. Discrete Math, 41.],
+says that every graph \(G\) contains an immersion of \(K_{\chi(G)}\).
+Its restriction to graphs with independence number \(2\)
+is equivalent to Vergara's Conjecture [Complete graph immersions in dense graphs. Discrete Mathematics,
+340(5):1019–1027, 2017.],
+that states that every graph with \(n\) vertices and independence number 2
+has an immersion of \(K_{n/2}\),
+has received some attention recently.
+In this paper we verify Vergara's Conjecture for graphs with bounded maximum degree.
+More specifically, we prove that if \(G\) is a graph with \(n\) vertices,
+independence number \(2\), and maximum degree less than \(19n/29 - 1\),
+then \(G\) contains an immersion of \(K_{n/2}\).
+\end{abstract}
+
+
 
 \section{Andrasfai graphs and its relatives}
 
@@ -106,7 +130,7 @@ This implies the following:
 
 In this paper, every graph is simple, i.e., contains no loops or multiple edges.
 An immersion of a graph \(H\) in a graph \(G\)
-is a subgraph \(I\) of \(G\) for which there is a bijection \(\ifun \colon V(H) \to V(I)\)
+is a subgraph \(I\) of \(G\) for which there is an injection \(\ifun \colon V(H) \to V(I)\)
 and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
 such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
 
@@ -129,7 +153,7 @@ In this paper, we are interested in the following immersion analog of Hadwiger's
 
 In this paper we are concerned with the particular case of graphs with independence number \(2\),
 which is motivated by the following.
-In 2017, Vergara~\cite{vergara2017complete} proved that there every graph \(G\) with independence number \(2\)
+In 2017, Vergara~\cite{vergara2017complete} proved that every graph \(G\) with independence number \(2\)
 contains an immersion of \(K_{\chi(G)}\) if and only if every graph graph with independence number \(2\) contains an immersion of \(K_{n/2}\). 
 In other words, in the case of graphs with independence number \(2\),
 Conjecture~\ref{conj:LescureMeyniel} is equivalent to the following conjecture.
