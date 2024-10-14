@@ -37,6 +37,8 @@
 
 \newcommand{\imm}{\subseteq_{IM}}
 \newcommand{\ifun}{{\rm i}}
+\newcommand{\andrasfai}{Andrasf\'ai}
+\newcommand{\Gcompl}{\overline{G}}
 
 \bibliographystyle{plain}
 
@@ -156,11 +158,16 @@ with high minimum degree at homomorphic to the so-called Andrasfái graphs.
 
 As an addition to this result, we present a somewhat simpler proof of Theorem~\ref{thm:gauthier}.
 
-\section{Andrasfai graphs}
+\smallskip
+\noindent
+\textbf{Organization of the paper.}
+In Section~\ref{sec:andrasfai} we present the \andrasfai~graphs,
+which play an important role in this paper,
+and a special coloring of \andrasfai~graphs used in this paper.
+In Section~\ref{sec:main-result} we use this coloring to prove Theorem~\ref{thm:main}.
+Finally, in Section~\ref{sec:2/5} we present a somewhat simpler proof of Theorem~\ref{thm:gauthier}.
 
-
-
-\newcommand{\andrasfai}{Andrasf\'ai}
+\section{\andrasfai~graphs}\label{sec:andrasfai}
 
 Let \(G\) be a triangle-free graph with \(n\) vertices.
 \andrasfai~\cite{andrasfal1964graphentheoretische} showed \(\delta(G) > 2n/5\),
@@ -284,11 +291,15 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 \end{proof}
 
 
-\section{Graphs whose complements admit a special \(3\)-coloring}
+\section{Dense graphs with bounded maximum degree}\label{sec:main-result}
 
-\newcommand{\Gcompl}{\overline{G}}
-
-Given a positive integer \(k\),
+In this section we prove Theorem~\ref{thm:main}.
+The strategy is to use that if \(G\) is a triangle-free graph with \(n\) vertices,
+independence number \(2\), and maximum degree less than \(19n/29 - 1\),
+then \(\Gcompl\) admits the \(3\)-coloring as in Lemma~\ref{lemma:andrasfai_blowup_coloring},
+and then showing that every graph whose complement admits such a \(3\)-coloring
+contains an immersion of \(K_{n/2}\).
+For that, given a positive integer \(k\),
 a \emph{\(k\)-clique-coloring} of a graph \(G\) is a partition \(\{D_1,\ldots, D_k\}\) of \(V(G)\)
 such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 
@@ -401,10 +412,7 @@ Now we can prove our main theorem.
 	The statement follows because \(|I_2 \cup I_3| = n - |I_1| > n/2\).
 \end{proof}
 
-\section{An alternative proof of the existence of immersions of $K_{2n/5}$}
-
-
-
+\section{An alternative proof of the existence of immersions of $K_{2n/5}$}\label{sec:2/5}
 
 \begin{theorem}
     Let \(G\) be a graph on \(n\) vertices.
