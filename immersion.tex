@@ -133,6 +133,10 @@ that proved that every such graph contains an immersion of \(K_{2\lfloor n/5\rfl
 In 2024, Botler et. al.~\cite{botler2024biclique} proved that every such graph
 contains the immersion of every complete bipartite graph with \(n/2\) vertices;
 and in another direction, Quiroz~\cite{quiroz2021clique} verified Conjecture~\ref{conj:vergara} for graphs with special forbidden subgraphs.
+The main strategy in~\cite{botler2024biclique} is to partition the vertex of the given graph in
+five parts, say \(V_1,\ldots, V_5\), and verifying that they are somehow cyclicly connected (i.e., the vertices of \(V_i\) are adjacent to many vertices of \(V_{i+1}\) for \(i=1,\ldots, 5\)). 
+A special case of this partition is the case \(G\) contains a spanning blow-up of \(C_5\),
+and was solved by Quiroz~\cite{botler2024biclique}.
 
 One can expect that vertices of high degree helps when finding for large clique immersions.
 For example, one of the first steps of Vergara's proof of the existence of \(K_{n/3}\) immersions
@@ -151,6 +155,8 @@ Then \(G\) contains an immersion of \(K_{n/2}\).
 In fact, we prove that \(V(G)\) can be partitioned into two sets \(A\), \(B\)
 such that \(A\) is a clique of \(G\) and \(G\) contains an immersion of a clique whose
 branch vertices are precisely \(B\).
+Our result generalizes Quiroz's result for graphs containing spanning immersions of \(C_5\)
+for graphs containing complements of blow-ups of Andrasfai graphs. 
 
 Our proof explores properties of the complement of the studied graph.
 More specifically, we use the fact that triangle-free graphs 
