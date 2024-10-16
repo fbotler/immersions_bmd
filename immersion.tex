@@ -60,35 +60,31 @@
 \maketitle
 
 \begin{abstract}
-An immersion of a graph \(H\) in a graph \(G\)
-is a subgraph \(I\) of \(G\) for which there is an injection \(\ifun \colon V(H) \to V(I)\)
-and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
+An immersion of a graph \(H\) in a graph \(G\) is given by an injection 
+\(\ifun \colon V(H) \to V(G)\) and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
 such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
+The immersion is the image of \(\ifun\) together with this set of paths. 
 The immersion analog of Hadwiger's Conjecture, posed by Lescure and Meyniel 
 [On a problem upon configurations contained in graphs
-with given chromatic number, Graph theory in memory of GA Dirac, (sandbjerg, 1985),
-325–331. Ann. Discrete Math, 41.],
+with given chromatic number, \emph{Ann.\ Discrete Math.}, (41)325--331, 1988],
 says that every graph \(G\) contains an immersion of \(K_{\chi(G)}\).
-Its restriction to graphs with independence number \(2\)
-is equivalent to Vergara's Conjecture [Complete graph immersions in dense graphs. Discrete Mathematics,
-340(5):1019–1027, 2017.],
-that states that every graph with \(n\) vertices and independence number 2
-has an immersion of \(K_{n/2}\),
-has received some attention recently.
+Its restriction to graphs with independence number \(2\) has received some attention recently, 
+and is equivalent to Vergara's Conjecture [Complete graph immersions in dense graphs. 
+\emph{Discrete Mathematics}, 340(5):1019–1027, 2017], that states that every graph 
+with \(n\) vertices and independence number 2 has an immersion of \(K_{n/2}\).
 In this paper we verify Vergara's Conjecture for graphs with bounded maximum degree.
-More specifically, we prove that if \(G\) is a graph with \(n\) vertices,
+Specifically, we prove that if \(G\) is a graph with \(n\) vertices,
 independence number \(2\), and maximum degree less than \(19n/29 - 1\),
 then \(G\) contains an immersion of \(K_{n/2}\).
 \end{abstract}
 
-
-
-
 In this paper, every graph is simple, i.e., contains no loops or multiple edges.
-An immersion of a graph \(H\) in a graph \(G\)
-is a subgraph \(I\) of \(G\) for which there is an injection \(\ifun \colon V(H) \to V(I)\)
-and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
+An immersion of a graph \(H\) in a graph \(G\) is given by an injection 
+\(\ifun \colon V(H) \to V(G)\) and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
 such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
+The vertices of \(G\) in the image of \(\ifun\) are the \emph{branch vertices} of the immersion, 
+and these vertices together with this set of edge-disjoint paths determine a subgraph 
+that we also refer to as an \emph{immersion} of \(H\) in \(G\). 
 
 Much work has been done in searching for given subgraphs in dense graphs.
 Hadwiger's Conjecture~\cite{hadwiger1943klassifikation}, for example,
@@ -98,10 +94,12 @@ Equivalently, Hadwiger's Conjecture says that every graph has chromatic number a
 or can be contracted to the complete graph with \(t+1\) vertices.
 Although it has been verified for graphs with chromatic number at most \(6\)~\cite{robertson1993hadwiger}, it is still open.
 
-Some special attention has been given to the case of graphs with chromatic number \(2\)~\cite{seymour2016hadwiger},
-for which the existence of a minor of \(K_{\chi(G)}\) is equivalent to the existence of a minor of \(K_{n/2}\) (see~\cite{plummer2003special}).
+Some special attention has been given to the case of bipartite graphs, 
+that is, graphs with chromatic number~\(2\)~\cite{seymour2016hadwiger},
+for which the existence of a minor of~\(K_{\chi(G)}\) is equivalent to the existence of a minor of \(K_{n/2}\) (see~\cite{plummer2003special}).
 
-In this paper, we are interested in the following immersion analog of Hadwiger's Conjecture posed by Lescure and Meyniel~\cite{lescure41problem}.
+In this paper, we are interested in the following immersion analog of Hadwiger's Conjecture, 
+posed by Lescure and Meyniel~\cite{lescure41problem}.
 
 \begin{conjecture}[Lescure--Meyniel,1985]\label{conj:LescureMeyniel}
 	Every graph \(G\) contains an immersion of \(K_{\chi(G)}\).
@@ -110,18 +108,17 @@ In this paper, we are interested in the following immersion analog of Hadwiger's
 In this paper we are concerned with the particular case of graphs with independence number \(2\),
 which is motivated by the following.
 In 2017, Vergara~\cite{vergara2017complete} proved that every graph \(G\) with independence number \(2\)
-contains an immersion of \(K_{\chi(G)}\) if and only if every graph graph with independence number \(2\) contains an immersion of \(K_{n/2}\). 
+contains an immersion of \(K_{\chi(G)}\) if and only if every graph with independence number \(2\) contains an immersion of \(K_{n/2}\). 
 In other words, in the case of graphs with independence number \(2\),
-Conjecture~\ref{conj:LescureMeyniel} is equivalent to the following conjecture.
-
+Conjecture~\ref{conj:LescureMeyniel} is equivalent to the following.
 
 \begin{conjecture}[Vergara, 2017]\label{conj:vergara}
 	Every graph with \(n\) vertices and independence number \(2\)
 	contains an immersion of \(K_{n/2}\).
 \end{conjecture}
 
-In particular, Vergara~\cite{vergara2017complete} proved a weakening of Conjecture~\ref{conj:vergara} that every graph with \(n\) vertices and independence number \(2\)
-has an immersion of \(K_{n/3}\).
+In particular, Vergara~\cite{vergara2017complete} proved a weakening of Conjecture~\ref{conj:vergara},
+namely, that every graph with \(n\) vertices and independence number \(2\) has an immersion of \(K_{n/3}\).
 This result was improved by Gauthier et al.~\cite{gauthier2019forcing},
 that proved that every such graph contains an immersion of \(K_{2\lfloor n/5\rfloor}\).
 
@@ -130,21 +127,23 @@ that proved that every such graph contains an immersion of \(K_{2\lfloor n/5\rfl
 	contains an immersion of \(K_{2\lfloor n/5\rfloor}\).
 \end{theorem}
 
-In 2024, Botler et. al.~\cite{botler2024biclique} proved that every such graph
+In 2024, Botler et al.~\cite{botler2024biclique} proved that every such graph
 contains the immersion of every complete bipartite graph with \(n/2\) vertices;
-and in another direction, Quiroz~\cite{quiroz2021clique} verified Conjecture~\ref{conj:vergara} for graphs with special forbidden subgraphs.
+and, in another direction, Quiroz~\cite{quiroz2021clique} verified 
+Conjecture~\ref{conj:vergara} for graphs with special forbidden subgraphs.
 The main strategy in~\cite{botler2024biclique} is to partition the vertex of the given graph in
 five parts, say \(V_1,\ldots, V_5\), and verifying that they are somehow cyclicly connected (i.e., the vertices of \(V_i\) are adjacent to many vertices of \(V_{i+1}\) for \(i=1,\ldots, 5\)). 
 A special case of this partition is the case \(G\) contains a spanning complete-blow-up of \(C_5\),
 and was solved by Quiroz~\cite{botler2024biclique} (the graph obtained from \(C_5\) by replacing each vertex by a clique and replacing each edge by a complete bipartite graph).
 
-One can expect that vertices of high degree helps when finding for large clique immersions.
+One can expect that vertices of high degree help when looking for large clique immersions.
 For example, one of the first steps of Vergara's proof of the existence of \(K_{n/3}\) immersions
-in graphs with independence number \(2\) is to show that its minimum degree is at least \(2n/3\);
+in graphs with independence number \(2\) is to show that their minimum degree is at least \(2n/3\);
 and, analogously, in the proof of Theorem~\ref{thm:gauthier} one proves that the minimum degree is at least \(3n/5\). 
 In this paper we consider graphs without vertices of large degree.
-More specifically, we verify Conjecture~\ref{conj:vergara} for graphs with bounded maximum degree
-as follows.
+Specifically, we verify Conjecture~\ref{conj:vergara} for graphs with maximum degree as follows,
+where \(\alpha(G)\) and \(\Delta(G)\) denote the independence number and the maximum degree of \(G\), 
+respectively.
 
 \begin{theorem}\label{thm:main}
 Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\) 
@@ -153,14 +152,14 @@ Then \(G\) contains an immersion of \(K_{n/2}\).
 \end{theorem}
 
 In fact, we prove that \(V(G)\) can be partitioned into two sets \(A\), \(B\)
-such that \(A\) is a clique of \(G\) and \(G\) contains an immersion of a clique whose
-branch vertices are precisely \(B\).
-Our result generalizes Quiroz's result for graphs containing spanning immersions of \(C_5\)
-for graphs containing complements of blow-ups of Andrasfai graphs. 
+such that \(A\) induces a clique in \(G\) and \(G\) contains an immersion of 
+a clique whose branch vertices are precisely~\(B\).
+Our result generalizes Quiroz's result for graphs containing spanning immersions 
+of~\(C_5\) for graphs containing complements of blow-ups of Andrasfai graphs. 
 
 Our proof explores properties of the complement of the studied graph.
-More specifically, we use the fact that triangle-free graphs 
-with high minimum degree at homomorphic to the so-called Andrasfái graphs.
+Specifically, we use the fact that triangle-free graphs with 
+high minimum degree are homomorphic to the so-called Andrasfái graphs.
 
 As an addition to this result, we present a somewhat simpler proof of Theorem~\ref{thm:gauthier}.
 
@@ -169,15 +168,15 @@ As an addition to this result, we present a somewhat simpler proof of Theorem~\r
 \textbf{Organization of the paper.}
 In Section~\ref{sec:andrasfai} we present the \andrasfai~graphs,
 which play an important role in this paper,
-and a special coloring of \andrasfai~graphs used in this paper.
-In Section~\ref{sec:main-result} we use this coloring to prove Theorem~\ref{thm:main}.
-Finally, in Section~\ref{sec:2/5} we present a somewhat simpler proof of Theorem~\ref{thm:gauthier}.
+and a special coloring for them which is used in the sequel.
+In Section~\ref{sec:main-result}, we use this coloring to prove Theorem~\ref{thm:main}.
+Finally, in Section~\ref{sec:2/5}, we present a somewhat simpler proof of Theorem~\ref{thm:gauthier}.
 
 \section{\andrasfai~graphs}\label{sec:andrasfai}
 
 Let \(G\) be a triangle-free graph with \(n\) vertices.
-\andrasfai~\cite{andrasfal1964graphentheoretische} showed \(\delta(G) > 2n/5\),
-then \(G\) is bipartite.
+\andrasfai~\cite{andrasfal1964graphentheoretische} showed that 
+if \(\delta(G) > 2n/5\), then \(G\) is bipartite.
 This result was generalized in many directions,
 one of which is the following.
 %
@@ -190,12 +189,13 @@ then \(G\) is \(3\)-colorable.
 %
 Chen, Jin, and Koh~\cite{chen1997triangle} strengthened Jin's result
 showing that \(G\) is \(3\)-colorable by exposing the structure of the graph.
-More specifically, they proved that if \(\delta(G) > 10n/29\),
+Specifically, they proved that if \(\delta(G) > 10n/29\),
 then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\in\mathbb{N}\),
 where \(\Gamma_d\) is the graph \((V_d,E_d)\)
 % TODO verificar se esta definição de \Gamma_d está correta
 for which \(V_d = [3d-1]\) and \(E_d = \left\{xy : y = x + i \text{ with } i \in [d,2d-1]\right\}\),
 where the sum is taken modulo \(3d-1\).
+These graphs \(\Gamma_d\) for \(d \in \mathbb{N}\) are the so called Andraifái graphs. 
 
 \begin{figure}[ht]
     \centering
@@ -223,7 +223,8 @@ where the sum is taken modulo \(3d-1\).
 	then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\).
 \end{theorem}
 
-In this paper we use the following property of the graphs \(\Gamma_d\).
+In this paper we use the following property of the graph~\(\Gamma_d\).
+We denote by \(\bar{H}\) the complement of a graph \(H\). 
 
 %\begin{proposition}
 %	Let \(d\in\mathbb{N}\).
@@ -244,12 +245,12 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 
 %TODO: verificar se G aparece. Não deveria aparecer.
 \begin{proof}
-	Let \(d\) and \(\Gamma_d\) as above.
+	Consider \(d\) and \(\Gamma_d\) as above.
 	We first observe that the maximal independent sets of \(\Gamma_d\)
 	consist precisely of sequences of \(d\) consecutive (modulo \(3d-1\)) vertices of \(\Gamma_d\).
 	Indeed,	by the definition of \(E_d\), \(u\) and \(v\) are adjacent 
 	if and only if \(u\) and \(v\) have (circular) distance at least \(d\).
-	Now, let \(D_1\) a maximum independent set of \(\Gamma_d\).
+	Now, let \(D_1\) be a maximum independent set of \(\Gamma_d\).
 	Assume, without loss of generality, that \(D_1 = \{1,\ldots,d\}\).
 	Let \(D_2 = \{d+1,\ldots,2d\}\) and \(D_3 = \{2d+1,\ldots, 3d-1\}\).
 	As observed above, \(D_2\) and \(D_3\) are independent sets of \(\Gamma_d\).
@@ -257,17 +258,17 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 	then either \(N_{D_3}(u) \subseteq N_{D_3}(u')\) or \(N_{D_3}(u') \subseteq N_{D_3}(u)\).
 	Now, we claim that \(\overline{\Gamma_d}[D_2\cup D_3]\) has no induced \(C_4\).
 	This is equivalent to prove that \(\Gamma_d[D_2\cup D_3]\) has no induced matching with two edges.
-	Suppose, for a contradiction that \(\Gamma_d[D_2\cup D_3]\) has an induced matching with two edges \(M\).
+	Suppose, for a contradiction that \(\Gamma_d[D_2\cup D_3]\) has an induced matching \(M\) with two edges.
 	Since \(D_2\) and \(D_3\) are independent sets, the edges of \(M\) must join vertices from \(D_2\) to vertices of \(D_3\).
-	Thus, \(M = \{e,e'\}\) with \(e = uv\) and \(e' = u'v'\) with \(u,u' \in D_2\) and \(v,v'\in D_3\).
-	Assume, without loss of generality, \(N_{D_3}(u') \subseteq N_{D_3}(u)\),
-	then we have \(v' \in N_{D_3}(u)\), and hence \(\Gamma_d[\{u,u',v,v'\}]\) is not an induced matching.
+	Say, \(M = \{e,e'\}\) with \(e = uv\) and \(e' = u'v'\) with \(u,u' \in D_2\) and \(v,v'\in D_3\).
+	Assume, without loss of generality, that \(N_{D_3}(u') \subseteq N_{D_3}(u)\),
+	then we have \(v' \in N_{D_3}(u)\), and hence \(\Gamma_d[\{u,u',v,v'\}]\) is not a matching.
 \end{proof}
 
 \begin{lemma}\label{lemma:andrasfai_blowup_coloring}
-	Let \(G\) a maximal triangle-free graph that is homomorphic to \(\Gamma_d\)
+	Let \(G\) be a maximal triangle-free graph that is homomorphic to \(\Gamma_d\)
 	for some \(d\in \mathbb{N}\),
-	and let \(I_1\) a maximum independent set of \(G\).
+	and let \(I_1\) be a maximum independent set of \(G\).
 	Then \(G\) admits a \(3\)-coloring \(\{I_1,I_2,I_3\}\)
 	such that \(\overline{G}[I_2\cup I_3]\) has no induced \(C_4\).
 \end{lemma}
@@ -275,24 +276,24 @@ In this paper we use the following property of the graphs \(\Gamma_d\).
 \begin{proof}
 	Let \(h \colon V(G) \to V(\Gamma_d)\) be a homomorphism from \(G\) to \(\Gamma_d\).
 	For each \(i\in [3d-1]\) let \(V_i = h^{-1}(i) = \{u\in V(G) : h(u) = i\}\)
-	the set of vertices of \(G\) mapped to \(i\).
+	be the set of vertices of \(G\) mapped to \(i\).
 	Note that every independent set of \(G\) is mapped to an independent set of \(\Gamma_d\).
 	Moreover, every maximal independent set of \(G\) is mapped to a maximal independent set of \(\Gamma_d\).
-	Now, let \(I_1\) be a maximum independent set of \(G\).
+	Now, let~\(I_1\) be a maximum independent set of \(G\).
 	Then \(D_1 = h(I_1) = \{h(u) : u \in I_1\}\) is a maximal independent set of \(\Gamma_d\).
 	Let \(\{D_1,D_2,D_3\}\) be the coloring of \(\Gamma_d\) given by Lemma~\ref{lemma:andrasfai_coloring},
 	and, for \(i = 2,3\), let \(I_i = h^{-1}(D_i) = \{u \in V(G) : h(u) \in D_i\}\).
 	Naturally, \(I_i\) is an independent set for \(i = 1,2,3\),
 	and, since \(V(\Gamma_d) = D_1\cup D_2\cup D_3\),
 	we have \(V(G) = I_1 \cup I_2 \cup I_3\).
-	Since \(\Gamma_d\) is triangle-free,
+	Because \(\Gamma_d\) is triangle-free,
 	by the maximality of \(G\), 
 	we have that \(uv\in E(G)\) if and only if \(h(u)h(v)\in E_d\).
-	Now if \(G[\{u,u',v,v'\}]\) is an induced matching with two edges
-	then we can assume, without loss of generality,
+	Now if \(G[\{u,u',v,v'\}]\) is a matching with two edges
+	then we may assume, without loss of generality,
 	that \(u,u' \in I_2\) and \(v,v'\in I_3\).
-	Moreover, \(u\) and \(u'\) (resp. \(v\) and \(v'\)) are in different \(V_i\)'s.
-	But this implies that \(\Gamma_d[h(\{u,u',v,v'\})]\) is an induced matching with two edges,
+	Moreover, \(u\) and \(u'\) (resp.\ \(v\) and \(v'\)) are in different sets \(V_i\).
+	But this implies that \(\Gamma_d[h(\{u,u',v,v'\})]\) is a matching with two edges,
 	a contradiction.
 \end{proof}
 
