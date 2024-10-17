@@ -215,7 +215,32 @@ These graphs \(\Gamma_d\) for \(d \in \mathbb{N}\) are the so called Andraifái 
 
 \begin{figure}[ht]
     \centering
-        \centering
+        \begin{tikzpicture}[scale = 0.8]
+        
+        \foreach \u in {1,...,12}{
+		 \node [black vertex] (\u) at (360/5 * \u-18:2cm) {};
+      	}
+      	
+      	\foreach \u in {1,...,5}{
+      		\foreach \i in {2,...,3}{
+      			\pgfmathtruncatemacro{\v}{\u + \i};
+      			\draw [thick] (\u) to (\v);
+      		}
+      	}
+        \end{tikzpicture}\hspace{1cm}
+        \begin{tikzpicture}[scale = 0.8]
+        
+        \foreach \u in {1,...,15}{
+		 \node [black vertex] (\u) at (360/8 * \u:2cm) {};
+      	}
+      	
+      	\foreach \u in {1,...,5}{
+      		\foreach \i in {3,...,5}{
+      			\pgfmathtruncatemacro{\v}{\u + \i};
+      			\draw [thick] (\u) to (\v);
+      		}
+      	}
+        \end{tikzpicture}\hspace{1cm}
         \begin{tikzpicture}[scale = 0.8]
         
         \foreach \u in {1,...,18}{
@@ -229,7 +254,7 @@ These graphs \(\Gamma_d\) for \(d \in \mathbb{N}\) are the so called Andraifái 
       		}
       	}
         \end{tikzpicture}
-    \caption{The Andrasfái graph $\Gamma_4$.}
+    \caption{The Andrasfái graphs $\Gamma_2$, $\Gamma_3$, and $\Gamma_4$.}
     \label{fig:andrasfai_graph}
 \end{figure}
 
@@ -437,7 +462,7 @@ Now we can prove our main theorem.
 
 \section{An alternative proof of the existence of immersions of $K_{2n/5}$}\label{sec:2/5}
 
-% Write some introduction to this section
+% Write some introduction to this Section
 % put the induced copy of C5 outside of the proof as a lemma
 % Maybe put Claim 7.2 outside too
 % these are general information for these graphs and can be used independently in other papers
