@@ -38,7 +38,20 @@
 \newcommand{\imm}{\subseteq_{IM}}
 \newcommand{\ifun}{{\rm i}}
 \newcommand{\andrasfai}{Andrasf\'ai}
-\newcommand{\Gcompl}{\overline{G}}
+
+\newcommand*\oline[1]{%
+  \vbox{%
+    \hrule height 0.5pt%                  % Line above with certain width
+    \kern0.25ex%                          % Distance between line and content
+    \hbox{%
+      \kern-0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+      \ifmmode#1\else\ensuremath{#1}\fi%  % The content, typeset in dependence of mode
+      \kern0.1em%                        % Distance between content and left side of box, negative values for lines shorter than content
+    }% end of hbox
+  }% end of vbox
+}
+
+\newcommand{\Gcompl}{\oline{G}}
 
 \bibliographystyle{plain}
 
@@ -76,10 +89,10 @@ $^4$Universidad Andrés Bello
 \maketitle
 
 \begin{abstract}
-An immersion of a graph \(H\) in a graph \(G\) is given by an injection 
-\(\ifun \colon V(H) \to V(G)\) and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
-such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
-The immersion is the image of \(\ifun\) together with this set of paths. 
+An immersion of a graph \(H\) in a graph \(G\) is a minimal subgraph \(I\) 
+of~\(G\) for which there is an injection \(\ifun \colon V(H) \to V(I)\) and 
+a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) in \(I\) such that 
+the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
 The immersion analog of Hadwiger's Conjecture, posed by Lescure and Meyniel 
 [On a problem upon configurations contained in graphs
 with given chromatic number, \emph{Ann.\ Discrete Math.}, (41)325--331, 1988],
@@ -95,12 +108,12 @@ then \(G\) contains an immersion of \(K_{n/2}\).
 \end{abstract}
 
 In this paper, every graph is simple, i.e., contains no loops or multiple edges.
-An immersion of a graph \(H\) in a graph \(G\) is given by an injection 
-\(\ifun \colon V(H) \to V(G)\) and a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) 
-such that the end vertices of \(P_{uv}\) are precisely \(\ifun(u)\) and \(\ifun(v)\).
-The vertices of \(G\) in the image of \(\ifun\) are the \emph{branch vertices} of the immersion, 
-and these vertices together with this set of edge-disjoint paths determine a subgraph 
-that we also refer to as an \emph{immersion} of \(H\) in \(G\). 
+An \emph{immersion} of a graph \(H\) in a graph \(G\) is a minimal subgraph \(I\) 
+of~\(G\) for which there is an injection \(\ifun \colon V(H) \to V(I)\) and 
+a set of edge-disjoint paths \(\{P_e : e \in E(H)\}\) in \(I\) such that 
+the end vertices of~\(P_{uv}\) are precisely \(\ifun(u)\) and~\(\ifun(v)\).
+The vertices of~\(G\) in the image of \(\ifun\) are the \emph{branch vertices} 
+of the immersion. 
 
 Much work has been done in searching for given subgraphs in dense graphs.
 Hadwiger's Conjecture~\cite{hadwiger1943klassifikation}, for example,
@@ -182,7 +195,7 @@ As an addition to this result, we present a somewhat simpler proof of Theorem~\r
 \smallskip
 \noindent
 \textbf{Organization of the paper.}
-In Section~\ref{sec:andrasfai} we present the \andrasfai~graphs,
+In Section~\ref{sec:andrasfai}, we present the \andrasfai~graphs,
 which play an important role in this paper,
 and a special coloring for them which is used in the sequel.
 In Section~\ref{sec:main-result}, we use this coloring to prove Theorem~\ref{thm:main}.
@@ -264,8 +277,9 @@ These graphs \(\Gamma_d\) for \(d \in \mathbb{N}\) are the so called Andraifái 
 	then \(G\) is homomorphic to \(\Gamma_d\) for some \(d\).
 \end{theorem}
 
+
 In this paper we use the following property of the graph~\(\Gamma_d\).
-We denote by \(\bar{H}\) the complement of a graph \(H\). 
+We denote by \(\oline{H}\) the complement of a graph \(H\). 
 
 %\begin{proposition}
 %	Let \(d\in\mathbb{N}\).
@@ -307,7 +321,7 @@ We denote by \(\bar{H}\) the complement of a graph \(H\).
 \end{proof}
 
 \begin{lemma}\label{lemma:andrasfai_blowup_coloring}
-	Let \(G\) be a maximal triangle-free graph that is homomorphic to \(\Gamma_d\)
+	Let \(G\) be a maximal triangle-free graph homomorphic to \(\Gamma_d\)
 	for some \(d\in \mathbb{N}\),
 	and let \(I_1\) be a maximum independent set of \(G\).
 	Then \(G\) admits a \(3\)-coloring \(\{I_1,I_2,I_3\}\)
@@ -329,11 +343,11 @@ We denote by \(\bar{H}\) the complement of a graph \(H\).
 	we have \(V(G) = I_1 \cup I_2 \cup I_3\).
 	Because \(\Gamma_d\) is triangle-free,
 	by the maximality of \(G\), 
-	we have that \(uv\in E(G)\) if and only if \(h(u)h(v)\in E_d\).
+	we have that \(uv\in E(G)\) if and only if~\(h(u)h(v)\in E_d\).
 	Now if \(G[\{u,u',v,v'\}]\) is a matching with two edges
 	then we may assume, without loss of generality,
 	that \(u,u' \in I_2\) and \(v,v'\in I_3\).
-	Moreover, \(u\) and \(u'\) (resp.\ \(v\) and \(v'\)) are in different sets \(V_i\).
+	Moreover, \(u\) and \(u'\) (resp.\ \(v\) and~\(v'\)) are in different sets \(V_i\).
 	But this implies that \(\Gamma_d[h(\{u,u',v,v'\})]\) is a matching with two edges,
 	a contradiction.
 \end{proof}
@@ -344,12 +358,12 @@ We denote by \(\bar{H}\) the complement of a graph \(H\).
 In this section we prove Theorem~\ref{thm:main}.
 The strategy is to use that if \(G\) is a triangle-free graph with \(n\) vertices,
 independence number \(2\), and maximum degree less than \(19n/29 - 1\),
-then \(\Gcompl\) admits the \(3\)-coloring as in Lemma~\ref{lemma:andrasfai_blowup_coloring},
+then \(\Gcompl\) admits a \(3\)-coloring as in Lemma~\ref{lemma:andrasfai_blowup_coloring},
 and then showing that every graph whose complement admits such a \(3\)-coloring
 contains an immersion of \(K_{n/2}\).
-For that, given a positive integer \(k\),
-a \emph{\(k\)-clique-coloring} of a graph \(G\) is a partition \(\{D_1,\ldots, D_k\}\) of \(V(G)\)
-such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
+For that, given a positive integer~\(k\),
+a \emph{\(k\)-clique coloring} of a graph \(G\) is a partition \(\{D_1,\ldots, D_k\}\) of \(V(G)\)
+such that \(D_i\) is a clique of \(G\) for every \(i\in[k]\).
 
 \begin{theorem}\label{thm:graphs_with_special_clique_coloring}
 	Let \(G\) be a graph with \(\alpha(G) = 2\)
@@ -362,12 +376,12 @@ such that \(C_i\) is a clique of \(G\) for every \(i\in[k]\).
 \begin{proof}
 	Observe that \(D_1,D_2,D_3\) is a \(3\)-coloring of \(\Gcompl\),
 	and by hypothesis \(D_1\) is a maximum independent set of \(\Gcompl\).
-	Let \(i\in\{2,3\}\) and let \(C\subseteq C_i\).
-	If \(|N_{D_1}(C)| < |C|\), 
+	Let \(i\in\{2,3\}\) and let \(C\subseteq D_i\).
+	If \({|N_{D_1}(C)| < |C|}\), 
 	then \((D_1\setminus N_{D_1}(C))\cup C\) is an independent set that is larger than \(D_1\),
 	a contradiction to the maximality of \(D_1\).
-	Then \(|N_{D_1}(C)| \geq |C|\) for any subset of \(C_i\).
-	By Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[C_i,D_1]\) that covers \(C_i\).
+	Then \(|N_{D_1}(C)| \geq |C|\) for any subset of \(D_i\).
+	By Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[D_i,D_1]\) that covers \(D_i\).
 	
 	Given a vertex \(u\in D_2 \cup D_3\), 
 	note that there is precisely one edge in \(M_2\cup M_3\) that contains \(u\),
