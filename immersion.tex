@@ -356,66 +356,69 @@ We denote by \(\oline{H}\) the complement of a graph \(H\).
 \section{Dense graphs with bounded maximum degree}\label{sec:main-result}
 
 In this section we prove Theorem~\ref{thm:main}.
-The strategy is to use that if \(G\) is a triangle-free graph with \(n\) vertices,
+The strategy is to use that, if \(G\) is a triangle-free graph with \(n\) vertices,
 independence number \(2\), and maximum degree less than \(19n/29 - 1\),
 then \(\Gcompl\) admits a \(3\)-coloring as in Lemma~\ref{lemma:andrasfai_blowup_coloring},
-and then showing that every graph whose complement admits such a \(3\)-coloring
+and then to show that every graph whose complement admits such a \(3\)-coloring
 contains an immersion of \(K_{n/2}\).
 For that, given a positive integer~\(k\),
 a \emph{\(k\)-clique coloring} of a graph \(G\) is a partition \(\{D_1,\ldots, D_k\}\) of \(V(G)\)
 such that \(D_i\) is a clique of \(G\) for every \(i\in[k]\).
+For \(X,Y \subseteq V(G)\), we use \(N_X(Y)\) to denote the set of neighbors of \(Y\) in \(X\), 
+and, if \(X \cap Y = \emptyset\), then we denote by \(G[X,Y]\) the bipartite subgraph of \(G\) 
+with vertex set \(X \cup Y\) and all edges of \(G\) between \(X\) and \(Y\). 
 
 \begin{theorem}\label{thm:graphs_with_special_clique_coloring}
 	Let \(G\) be a graph with \(\alpha(G) = 2\)
-	and that admits a \(3\)-clique coloring \(\{D_1,D_2,D_3\}\) such that
+        that admits a \(3\)-clique coloring \(\{D_1,D_2,D_3\}\) such that
 	(i) \(D_1\) is a maximum clique of \(G\); and
 	(ii) \(G[D_2\cup D_3]\) has no induced \(C_4\).
 	Then \(G\) contains an immersion of a clique whose set of branch vertices is precisely \(D_2\cup D_3\).
 \end{theorem}
 
 \begin{proof}
-	Observe that \(D_1,D_2,D_3\) is a \(3\)-coloring of \(\Gcompl\),
+	Observe that \(\{D_1,D_2,D_3\}\) is a \(3\)-coloring of \(\Gcompl\),
 	and by hypothesis \(D_1\) is a maximum independent set of \(\Gcompl\).
 	Let \(i\in\{2,3\}\) and let \(C\subseteq D_i\).
 	If \({|N_{D_1}(C)| < |C|}\), 
-	then \((D_1\setminus N_{D_1}(C))\cup C\) is an independent set that is larger than \(D_1\),
+	then the set \({(D_1\setminus N_{D_1}(C))\cup C}\) is independent and is larger than \(D_1\),
 	a contradiction to the maximality of \(D_1\).
-	Then \(|N_{D_1}(C)| \geq |C|\) for any subset of \(D_i\).
-	By Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[D_i,D_1]\) that covers \(D_i\).
+	Hence, \(|N_{D_1}(C)| \geq |C|\) for every subset \(C\) of \(D_i\).
+	So, by Hall's Theorem, there is a matching \(M_i\) in \(\Gcompl[D_i,D_1]\) that covers \(D_i\).
 	
 	Given a vertex \(u\in D_2 \cup D_3\), 
 	note that there is precisely one edge in \(M_2\cup M_3\) that contains \(u\),
 	and let \(r_u\in D_1\) be the vertex such that \(ur_u\in M_2\cup M_3\).
 %	We say that \(r_u\) is the \emph{representative} of \(u\).
 	Note that \(r_u \notin N(u)\),
-	and hence, since \(\alpha(G) = 2\), \(r_u\) is adjacent to every vertex in \(V(G)\setminus N[u]\).
+	and hence, because \(\alpha(G) = 2\), \(r_u\) is adjacent to every vertex in \(V(G)\setminus N[u]\).
 	In what follows, let \(E' = E\big(G[D_2,D_3]\big)\).
 	Note that if \(u\in D_2\) and \(v\in D_3\) are such that \(r_u = r_v = w\),
 	then \(uv \in E'\), otherwise \(u,v,w\) would be an independent set of size \(3\).
 %	
-	Note that if \(uv\notin E'\) we have \(r_u\in N(v)\), \(r_v\in N(u)\),
-	and since \(D_1\) is a clique, \(r_ur_v\in E(G)\).
+	Note that if \(uv\notin E'\) we have \(r_u\in N(v)\) and \(r_v\in N(u)\),
+	so, because \(D_1\) is a clique, \(r_ur_v\in E(G)\).
 
 	Now, for every \(uv\notin E'\), let \(P_{uv}\) be the path \(u r_v r_u v\).
 	We claim that the paths \(P_e\) with \(e\notin E'\) are pairwise edge-disjoint.
 	Indeed, let \(u,u' \in D_2\) and \(v,v' \in D_3\) be such that \(uv,u'v' \notin E'\)
 	and \(uv \neq u'v'\).
-	Note that \(u\) and \(u'\) (resp. \(v\) and \(v'\)) are not necessarily distinct,
-	but either \(u \neq u'\) or \(v \neq v'\).
+	Note that \(u\) and \(u'\) (resp.\ \(v\) and \(v'\)) are not necessarily distinct,
+	but \(u \neq u'\) or \(v \neq v'\).
 	If \(v\neq v'\), then \(r_v \neq r_{v'}\) because \(M_3\) is a matching.
 	This implies that \(ur_v \neq u'r_{v'}\) (even if \(u = u'\)).
-	Analogously, we have \(vr_u \neq v'r_{u'}\).
+	Analogously, we deduce that \(vr_u \neq v'r_{u'}\).
 	In what follows, we prove that \(r_ur_v \neq r_{u'}r_{v'}\).
 	Suppose, for a contradiction, that \(r_ur_v = r_{u'}r_{v'}\).
 	If \(r_u = r_{u'}\) and \(r_v = r_{v'}\), then \(u=u'\) and \(v=v'\), a contradiction.
-	Thus, we may assume \(r_u = r_{v'}\) and \(r_v = r_{u'}\).
+	Thus, we must have \(r_u = r_{v'}\) and \(r_v = r_{u'}\).
 	As noted above, this implies that \(uv',vu' \in E'\) (see Figure~\ref{fig:induced-C4}).
 	But then \(\{u,v,u',v'\}\) induce a \(C_4\) in \(G[D_2\cup D_3]\),
 	a contradiction.
 	
-	Since \(D_2\) and \(D_3\) are cliques,
+	Because \(D_2\) and \(D_3\) are cliques,
 	and the paths \(P_e\) with \(e\notin E'\) are edge-disjoint,
-	\(G[D_2\cup D_3]\cup\{P_e : e\notin E'\}\) is the desired immersion.
+	\({G[D_2\cup D_3]\cup\{P_e : e\notin E'\}}\) is the desired immersion.
 \end{proof}
 
 \begin{figure}[ht]
@@ -447,25 +450,25 @@ such that \(D_i\) is a clique of \(G\) for every \(i\in[k]\).
         \draw [thick] (u) -- (v') (v) -- (u');
         \draw [thick,dashed] (u) to [bend left = 15] (ru) (v) to [bend right = 15] (rv) (u') to [bend left] (rv) (v') to [bend right] (ru);
         \end{tikzpicture}
-    \caption{}
+    \caption{Situation in the proof of Theorem~\ref{thm:graphs_with_special_clique_coloring}.}
     \label{fig:induced-C4}
 \end{figure}
 
 Now we can prove our main theorem.
 
 \begin{proof}[Proof of Theorem~\ref{thm:main}]
-	Let \(G\) be a graph with \(n\) vertices for which \(\alpha(G) \leq 2\)
-	and \(\Delta(G) < 19n/29 - 1\).
+	Let \(G\) be a graph with \(n\) vertices for which \(\Delta(G) < 19n/29 - 1\) 
+        and \(\alpha(G) \leq 2\).
 	Observe that \(\delta(\Gcompl) = (n-1) - \Delta(G) > 10n/29\),
 	and hence, 
 	by Theorem~\ref{thm:ChenJinKoh}, \(\Gcompl\) is homomorphic to \(\Gamma_d\) for some \(d\).	
 %	
-	Now, let \(I_1\) be a maximum independent set of \(\Gcompl\).
-	If \(|I_1| \geq n/2\), then \(I_1\) is the desired immersion.
+	Now, let \(I_1\) be a maximum independent set of~\(\Gcompl\).
+	If \(|I_1| \geq n/2\), then \(G[I_1]\) is the desired immersion.
 	Thus, assume \(|I_1| < n/2\).
 	By Lemma~\ref{lemma:andrasfai_blowup_coloring},
-	we can find a \(3\)-coloring \(\{I_1,I_2,I_3\}\) of \(\Gcompl\)
-	such that \(G[I_2\cup I_3]\) has no induced \(C_4\).
+	there exists a \(3\)-coloring \(\{I_1,I_2,I_3\}\) of \(\Gcompl\)
+	such that \(G[I_2\cup I_3]\) has no induced~\(C_4\).
 	Observe that \(\{I_1,I_2,I_3\}\) 
 	is a \(3\)-clique coloring of \(G\)
 	such that \(I_1\) is a maximal clique and \(G[I_2\cup I_3]\) has no induced \(C_4\).
